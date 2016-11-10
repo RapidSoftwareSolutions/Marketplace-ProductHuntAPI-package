@@ -8,7 +8,7 @@ The API makes it easy to work with ProductHunt.
 1. Go to [API Dashboard](https://www.producthunt.com/v1/oauth/applications)
 2. Add new application.
 3. After creating a new app you will see client ID, client Secret and redirect URI.
-4. To generate authorization code use this link https://api.producthunt.com/v1/oauth/authorize?client_id=<your_client_id>&redirect_uri=<your_redirect_uri>&response_type=code&scope=private public
+4. To generate authorization code use this link https://api.producthunt.com/v1/oauth/authorize?client_id=_your_client_id_&redirect_uri=_your_redirect_uri_&response_type=code&scope=private public
 
 ## TOC: 
 * [getUserAccessToken](#getUserAccessToken)

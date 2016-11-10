@@ -1,0 +1,1269 @@
+{
+  "package": "ProductHuntAPI",
+  "tagline": "ProductHunt API Wrapper",
+  "description": "The API makes it easy to work with ProductHunt.",
+  "image": "http://logo.clearbit.com/producthunt.com",
+  "repo": "https://github.com/RapidSoftwareSolutions/Marketplace-ProductHuntAPI-package",
+  "accounts": {
+    "domain": "producthunt.com",
+    "credentials": [
+      "clientId",
+      "clientSecret",
+      "redirectUri"
+    ]
+  },
+  "blocks": [
+    {
+      "name": "getUserAccessToken",
+      "description": "This endpoint allows to get a token on behalf of a user.",
+      "args": [
+        {
+          "name": "clientId",
+          "type": "credentials",
+          "info": "Required: The id of your application obtained from ProductHunt."
+        },
+        {
+          "name": "clientSecret",
+          "type": "credentials",
+          "info": "Required: The secret of your application obtained from ProductHunt."
+        },
+        {
+          "name": "redirectUri",
+          "type": "credentials",
+          "info": "Required: Your redirect uri."
+        },
+        {
+          "name": "code",
+          "type": "String",
+          "info": "Required: The access grant code you received via the callback from ProductHunt."
+        }
+      ],
+      "callbacks": [
+        {
+          "name": "error",
+          "info": "Error"
+        },
+        {
+          "name": "success",
+          "info": "Success => channels: Array <string>"
+        }
+      ]
+    },
+    {
+      "name": "getClientAccessToken",
+      "description": "This endpoint allows to get a token without user context. (eg before a user logs in). Please remember that this tokens limit you to public endpoints that don't require user context.",
+      "args": [
+        {
+          "name": "clientId",
+          "type": "credentials",
+          "info": "Required: The id of your application obtained from ProductHunt."
+        },
+        {
+          "name": "clientSecret",
+          "type": "credentials",
+          "info": "Required: The secret of your application obtained from ProductHunt."
+        }
+      ],
+      "callbacks": [
+        {
+          "name": "error",
+          "info": "Error"
+        },
+        {
+          "name": "success",
+          "info": "Success => channels: Array <string>"
+        }
+      ]
+    },
+    {
+      "name": "getTechPosts",
+      "description": "This endpoint allows to get the tech posts of today.",
+      "args": [
+        {
+          "name": "accessToken",
+          "type": "String",
+          "info": "Required: The valid accessToken."
+        },
+        {
+          "name": "daysAgo",
+          "type": "String",
+          "info": "Optional: Parameter for pagination."
+        },
+        {
+          "name": "day",
+          "type": "String",
+          "info": "Optional: Alternate parameter for requesting specific days (Format: day=YYYY-MM-DD)."
+        }
+      ],
+      "callbacks": [
+        {
+          "name": "error",
+          "info": "Error"
+        },
+        {
+          "name": "success",
+          "info": "Success => channels: Array <string>"
+        }
+      ]
+    },
+    {
+      "name": "getPostByCategory",
+      "description": "This endpoint allows to get the posts of today for given category.",
+      "args": [
+        {
+          "name": "accessToken",
+          "type": "String",
+          "info": "Required: The valid accessToken."
+        },
+        {
+          "name": "categoryName",
+          "type": "String",
+          "info": "Required: The name of the category."
+        },
+        {
+          "name": "daysAgo",
+          "type": "String",
+          "info": "Optional: Parameter for pagination."
+        },
+        {
+          "name": "day",
+          "type": "String",
+          "info": "Optional: Alternate parameter for requesting specific days (Format: day=YYYY-MM-DD)."
+        }
+      ],
+      "callbacks": [
+        {
+          "name": "error",
+          "info": "Error"
+        },
+        {
+          "name": "success",
+          "info": "Success => channels: Array <string>"
+        }
+      ]
+    },
+    {
+      "name": "getAllPosts",
+      "description": "This endpoint allows to get all the newest posts.",
+      "args": [
+        {
+          "name": "accessToken",
+          "type": "String",
+          "info": "Required: The valid accessToken."
+        },
+        {
+          "name": "searchUrl",
+          "type": "String",
+          "info": "Optional: Filter parameter: can filter posts by url."
+        },
+        {
+          "name": "searchCategory",
+          "type": "String",
+          "info": "Optional: Filter parameter: can filter posts by category. Default = unspecified (All categories). "
+        },
+        {
+          "name": "searchTopic",
+          "type": "String",
+          "info": "Optional: Filter parameter: can filter posts by topic id or slug. Default = unspecified (All topics)."
+        },
+        {
+          "name": "older",
+          "type": "String",
+          "info": "Optional: Filter parameter: get only records older than the provided id."
+        },
+        {
+          "name": "newer",
+          "type": "String",
+          "info": "Optional: Filter parameter: get only records newer than the provided id."
+        },
+        {
+          "name": "perPage",
+          "type": "String",
+          "info": "Optional: Filter parameter: define the amount of records sent per call (max 50)."
+        }
+      ],
+      "callbacks": [
+        {
+          "name": "error",
+          "info": "Error"
+        },
+        {
+          "name": "success",
+          "info": "Success => channels: Array <string>"
+        }
+      ]
+    },
+    {
+      "name": "getPostsCreatedByUser",
+      "description": "This endpoint allows to get all posts created by a user.",
+      "args": [
+        {
+          "name": "accessToken",
+          "type": "String",
+          "info": "Required: The valid accessToken."
+        },
+        {
+          "name": "userId",
+          "type": "String",
+          "info": "Required: The valid user ID."
+        },
+        {
+          "name": "older",
+          "type": "String",
+          "info": "Optional: Filter parameter: get only records older than the provided id."
+        },
+        {
+          "name": "newer",
+          "type": "String",
+          "info": "Optional: Filter parameter: get only records newer than the provided id."
+        },
+        {
+          "name": "perPage",
+          "type": "String",
+          "info": "Optional: Filter parameter: define the amount of records sent per call (max 50)."
+        }
+      ],
+      "callbacks": [
+        {
+          "name": "error",
+          "info": "Error"
+        },
+        {
+          "name": "success",
+          "info": "Success => channels: Array <string>"
+        }
+      ]
+    },
+    {
+      "name": "getPostsMadeByUser",
+      "description": "This endpoint allows to get all posts made by a user.",
+      "args": [
+        {
+          "name": "accessToken",
+          "type": "String",
+          "info": "Required: The valid accessToken."
+        },
+        {
+          "name": "userId",
+          "type": "String",
+          "info": "Required: The valid user ID."
+        },
+        {
+          "name": "older",
+          "type": "String",
+          "info": "Optional: Filter parameter: get only records older than the provided id."
+        },
+        {
+          "name": "newer",
+          "type": "String",
+          "info": "Optional: Filter parameter: get only records newer than the provided id."
+        },
+        {
+          "name": "perPage",
+          "type": "String",
+          "info": "Optional: Filter parameter: define the amount of records sent per call (max 50)."
+        }
+      ],
+      "callbacks": [
+        {
+          "name": "error",
+          "info": "Error"
+        },
+        {
+          "name": "success",
+          "info": "Success => channels: Array <string>"
+        }
+      ]
+    },
+    {
+      "name": "getPost",
+      "description": "This endpoint allows to get details of a post.",
+      "args": [
+        {
+          "name": "accessToken",
+          "type": "String",
+          "info": "Required: The valid accessToken."
+        },
+        {
+          "name": "postId",
+          "type": "String",
+          "info": "Required: The valid post ID."
+        }
+      ],
+      "callbacks": [
+        {
+          "name": "error",
+          "info": "Error"
+        },
+        {
+          "name": "success",
+          "info": "Success => channels: Array <string>"
+        }
+      ]
+    },
+    {
+      "name": "getUsers",
+      "description": "This endpoint allows to get all users.",
+      "args": [
+        {
+          "name": "accessToken",
+          "type": "String",
+          "info": "Required: The valid accessToken."
+        },
+        {
+          "name": "older",
+          "type": "String",
+          "info": "Optional: Filter parameter: get only records older than the provided id."
+        },
+        {
+          "name": "newer",
+          "type": "String",
+          "info": "Optional: Filter parameter: get only records newer than the provided id."
+        },
+        {
+          "name": "perPage",
+          "type": "String",
+          "info": "Optional: Filter parameter: define the amount of records sent per call (max 50)."
+        },
+        {
+          "name": "order",
+          "type": "String",
+          "info": "Optional: Filter parameter: define the order you want to receive the records (does not affect older/newer behaviour). Valid values are asc or desc."
+        }
+      ],
+      "callbacks": [
+        {
+          "name": "error",
+          "info": "Error"
+        },
+        {
+          "name": "success",
+          "info": "Success => channels: Array <string>"
+        }
+      ]
+    },
+    {
+      "name": "getSingleUser",
+      "description": "This endpoint allows to get details of a user.",
+      "args": [
+        {
+          "name": "accessToken",
+          "type": "String",
+          "info": "Required: The valid accessToken."
+        },
+        {
+          "name": "userId",
+          "type": "String",
+          "info": "Required: The ID or username of the User you want to fetch."
+        },
+        {
+          "name": "exclude",
+          "type": "String",
+          "info": "Optional: Option to exclude certain values from the request. Options - \"relationships\"."
+        }
+      ],
+      "callbacks": [
+        {
+          "name": "error",
+          "info": "Error"
+        },
+        {
+          "name": "success",
+          "info": "Success => channels: Array <string>"
+        }
+      ]
+    },
+    {
+      "name": "getCollections",
+      "description": "This endpoint allows to get newest collections.",
+      "args": [
+        {
+          "name": "accessToken",
+          "type": "String",
+          "info": "Required: The valid accessToken."
+        },
+        {
+          "name": "older",
+          "type": "String",
+          "info": "Optional: Filter parameter: get only records older than the provided id."
+        },
+        {
+          "name": "newer",
+          "type": "String",
+          "info": "Optional: Filter parameter: get only records newer than the provided id."
+        },
+        {
+          "name": "perPage",
+          "type": "String",
+          "info": "Optional: Filter parameter: define the amount of records sent per call (max 50)."
+        },
+        {
+          "name": "order",
+          "type": "String",
+          "info": "Optional: Filter parameter: define the order you want to receive the records (does not affect older/newer behaviour). Valid values are asc or desc."
+        },
+        {
+          "name": "sortBy",
+          "type": "String",
+          "info": "Optional: Filter parameter: valid values are created_at, updated_at or featured_at."
+        },
+        {
+          "name": "searchFeatured",
+          "type": "String",
+          "info": "Optional: Only return collections that have been featured on Product Hunt. true or false. Default = false."
+        },
+        {
+          "name": "searchCategory",
+          "type": "String",
+          "info": "Optional: Only return collections from certain category. Default = unspecified (All categories)."
+        },
+        {
+          "name": "searchSlug",
+          "type": "String",
+          "info": "Optional: Filter by the url slug of the collection."
+        },
+        {
+          "name": "searchUsername",
+          "type": "String",
+          "info": "Optional: Filter by the username of the creator of the collection."
+        }
+      ],
+      "callbacks": [
+        {
+          "name": "error",
+          "info": "Error"
+        },
+        {
+          "name": "success",
+          "info": "Success => channels: Array <string>"
+        }
+      ]
+    },
+    {
+      "name": "getUserCollections",
+      "description": "This endpoint allows to get all collections created by a user.",
+      "args": [
+        {
+          "name": "accessToken",
+          "type": "String",
+          "info": "Required: The valid accessToken."
+        },
+        {
+          "name": "userId",
+          "type": "String",
+          "info": "Required: The valid user ID."
+        },
+        {
+          "name": "page",
+          "type": "String",
+          "info": "Optional: Parameter for pagination."
+        },
+        {
+          "name": "perPage",
+          "type": "String",
+          "info": "Optional: Filter parameter: define the amount of records sent per call (max 50)."
+        },
+        {
+          "name": "order",
+          "type": "String",
+          "info": "Optional: Filter parameter: define the order you want to receive the records (does not affect older/newer behaviour). Valid values are asc or desc."
+        },
+        {
+          "name": "sortBy",
+          "type": "String",
+          "info": "Optional: Filter parameter: valid values are created_at, updated_at or featured_at."
+        },
+        {
+          "name": "searchFeatured",
+          "type": "String",
+          "info": "Optional: Only return collections that have been featured on Product Hunt. true or false. Default = false."
+        }
+      ],
+      "callbacks": [
+        {
+          "name": "error",
+          "info": "Error"
+        },
+        {
+          "name": "success",
+          "info": "Success => channels: Array <string>"
+        }
+      ]
+    },
+    {
+      "name": "getCollectionsWithPost",
+      "description": "This endpoint allows to get all collections that include a certain post.",
+      "args": [
+        {
+          "name": "accessToken",
+          "type": "String",
+          "info": "Required: The valid accessToken."
+        },
+        {
+          "name": "postId",
+          "type": "String",
+          "info": "Required: The valid post ID."
+        },
+        {
+          "name": "page",
+          "type": "String",
+          "info": "Optional: Parameter for pagination."
+        },
+        {
+          "name": "perPage",
+          "type": "String",
+          "info": "Optional: Filter parameter: define the amount of records sent per call (max 50)."
+        },
+        {
+          "name": "order",
+          "type": "String",
+          "info": "Optional: Filter parameter: define the order you want to receive the records (does not affect older/newer behaviour). Valid values are asc or desc."
+        },
+        {
+          "name": "sortBy",
+          "type": "String",
+          "info": "Optional: Filter parameter: valid values are created_at, updated_at or featured_at."
+        },
+        {
+          "name": "searchFeatured",
+          "type": "String",
+          "info": "Optional: Only return collections that have been featured on Product Hunt. true or false. Default = false."
+        }
+      ],
+      "callbacks": [
+        {
+          "name": "error",
+          "info": "Error"
+        },
+        {
+          "name": "success",
+          "info": "Success => channels: Array <string>"
+        }
+      ]
+    },
+    {
+      "name": "getSingleCollection",
+      "description": "This endpoint allows to get details of a collection.",
+      "args": [
+        {
+          "name": "accessToken",
+          "type": "String",
+          "info": "Required: The valid accessToken."
+        },
+        {
+          "name": "collectionId",
+          "type": "String",
+          "info": "Required: The numeric ID of the Collection you want to fetch."
+        }
+      ],
+      "callbacks": [
+        {
+          "name": "error",
+          "info": "Error"
+        },
+        {
+          "name": "success",
+          "info": "Success => channels: Array <string>"
+        }
+      ]
+    },
+    {
+      "name": "getNotifications",
+      "description": "This endpoint allows to receive your latest Post related notifications.",
+      "args": [
+        {
+          "name": "accessToken",
+          "type": "String",
+          "info": "Required: The valid accessToken."
+        },
+        {
+          "name": "perPage",
+          "type": "String",
+          "info": "Optional: Filter parameter: define the amount of records sent per call (max 50)."
+        },
+        {
+          "name": "searchType",
+          "type": "String",
+          "info": "Optional: Type of reference object accepted, defaults to 'Post', use 'all' for every notification type."
+        }
+      ],
+      "callbacks": [
+        {
+          "name": "error",
+          "info": "Error"
+        },
+        {
+          "name": "success",
+          "info": "Success => channels: Array <string>"
+        }
+      ]
+    },
+    {
+      "name": "getPostVotes",
+      "description": "This endpoint allows to see all votes for a post.",
+      "args": [
+        {
+          "name": "accessToken",
+          "type": "String",
+          "info": "Required: The valid accessToken."
+        },
+        {
+          "name": "postId",
+          "type": "String",
+          "info": "Required: The ID of the post you want to find votes for."
+        },
+        {
+          "name": "older",
+          "type": "String",
+          "info": "Optional: Filter parameter: get only records older than the provided id."
+        },
+        {
+          "name": "newer",
+          "type": "String",
+          "info": "Optional: Filter parameter: get only records newer than the provided id."
+        },
+        {
+          "name": "perPage",
+          "type": "String",
+          "info": "Optional: Filter parameter: define the amount of records sent per call (max 50)."
+        },
+        {
+          "name": "order",
+          "type": "String",
+          "info": "Optional: Filter parameter: define the order you want to receive the records (does not affect older/newer behaviour). Valid values are asc or desc."
+        }
+      ],
+      "callbacks": [
+        {
+          "name": "error",
+          "info": "Error"
+        },
+        {
+          "name": "success",
+          "info": "Success => channels: Array <string>"
+        }
+      ]
+    },
+    {
+      "name": "getUserVotes",
+      "description": "This endpoint allows to see all votes for a user.",
+      "args": [
+        {
+          "name": "accessToken",
+          "type": "String",
+          "info": "Required: The valid accessToken."
+        },
+        {
+          "name": "userId",
+          "type": "String",
+          "info": "Required: The ID of the user you want to find votes for."
+        },
+        {
+          "name": "older",
+          "type": "String",
+          "info": "Optional: Filter parameter: get only records older than the provided id."
+        },
+        {
+          "name": "newer",
+          "type": "String",
+          "info": "Optional: Filter parameter: get only records newer than the provided id."
+        },
+        {
+          "name": "perPage",
+          "type": "String",
+          "info": "Optional: Filter parameter: define the amount of records sent per call (max 50)."
+        },
+        {
+          "name": "order",
+          "type": "String",
+          "info": "Optional: Filter parameter: define the order you want to receive the records (does not affect older/newer behaviour). Valid values are asc or desc."
+        }
+      ],
+      "callbacks": [
+        {
+          "name": "error",
+          "info": "Error"
+        },
+        {
+          "name": "success",
+          "info": "Success => channels: Array <string>"
+        }
+      ]
+    },
+    {
+      "name": "getMySettings",
+      "description": "This endpoint allows to get your own details.",
+      "args": [
+        {
+          "name": "accessToken",
+          "type": "String",
+          "info": "Required: The valid accessToken."
+        },
+        {
+          "name": "exclude",
+          "type": "String",
+          "info": "Optional: Option to exclude certain values from the request. Options - \"relationships\"."
+        }
+      ],
+      "callbacks": [
+        {
+          "name": "error",
+          "info": "Error"
+        },
+        {
+          "name": "success",
+          "info": "Success => channels: Array <string>"
+        }
+      ]
+    },
+    {
+      "name": "getFollowers",
+      "description": "This endpoint allows to get list all followers.",
+      "args": [
+        {
+          "name": "accessToken",
+          "type": "String",
+          "info": "Required: The valid accessToken."
+        },
+        {
+          "name": "userId",
+          "type": "String",
+          "info": "Required: The ID of the user you want to fetch all followers from."
+        },
+        {
+          "name": "older",
+          "type": "String",
+          "info": "Optional: Filter parameter: get only records older than the provided id."
+        },
+        {
+          "name": "newer",
+          "type": "String",
+          "info": "Optional: Filter parameter: get only records newer than the provided id."
+        },
+        {
+          "name": "perPage",
+          "type": "String",
+          "info": "Optional: Filter parameter: define the amount of records sent per call (max 50)."
+        },
+        {
+          "name": "order",
+          "type": "String",
+          "info": "Optional: Filter parameter: define the order you want to receive the records (does not affect older/newer behaviour). Valid values are asc or desc."
+        }
+      ],
+      "callbacks": [
+        {
+          "name": "error",
+          "info": "Error"
+        },
+        {
+          "name": "success",
+          "info": "Success => channels: Array <string>"
+        }
+      ]
+    },
+    {
+      "name": "getInteractions",
+      "description": "This endpoint allows to get user's interactions.",
+      "args": [
+        {
+          "name": "accessToken",
+          "type": "String",
+          "info": "Required: The valid accessToken."
+        },
+        {
+          "name": "include",
+          "type": "String",
+          "info": "Optional: Interactions to be included. Possible values: following_user_ids, voted_post_ids, voted_comment_ids, collected_post_ids, subscribed_collection_ids, subscribed_live_event_ids, followed_topics_ids."
+        }
+      ],
+      "callbacks": [
+        {
+          "name": "error",
+          "info": "Error"
+        },
+        {
+          "name": "success",
+          "info": "Success => channels: Array <string>"
+        }
+      ]
+    },
+    {
+      "name": "getCategories",
+      "description": "This endpoint allows to get user's interactions.",
+      "args": [
+        {
+          "name": "accessToken",
+          "type": "String",
+          "info": "Required: The valid accessToken."
+        }
+      ],
+      "callbacks": [
+        {
+          "name": "error",
+          "info": "Error"
+        },
+        {
+          "name": "success",
+          "info": "Success => channels: Array <string>"
+        }
+      ]
+    },
+    {
+      "name": "getLiveEvents",
+      "description": "This endpoint allows to get list of live events.",
+      "args": [
+        {
+          "name": "accessToken",
+          "type": "String",
+          "info": "Required: The valid accessToken."
+        },
+        {
+          "name": "offset",
+          "type": "String",
+          "info": "Optional: Filter parameter: define the amount of records to be skipped."
+        },
+        {
+          "name": "perPage",
+          "type": "String",
+          "info": "Optional: Filter parameter: define the amount of records sent per call (default 20, max 50)."
+        },
+        {
+          "name": "older",
+          "type": "String",
+          "info": "Optional: Filter parameter: get only records with older \"start_at\" date than the provided date (format \"YYYY-MM-DD\")."
+        },
+        {
+          "name": "newer",
+          "type": "String",
+          "info": "Optional: Filter parameter: get only records with newer \"start_at\" date (includes events with unspeficifed date) than the provided date (format \"YYYY-MM-DD\")."
+        },
+        {
+          "name": "searchCategory",
+          "type": "String",
+          "info": "Optional: Retrieve events for a specific category."
+        },
+        {
+          "name": "searchDate",
+          "type": "String",
+          "info": "Optional: Retrieve events for a specific month (format \"YYYY-MM\"), use \false\" for events without a start_at date."
+        },
+        {
+          "name": "searchLiveVideo",
+          "type": "String",
+          "info": "Optional: Retrieve LIVE on camera events. true or false. Default: false."
+        },
+        {
+          "name": "searchSlug",
+          "type": "String",
+          "info": "Optional: Filter by the url slug of the collection."
+        }
+      ],
+      "callbacks": [
+        {
+          "name": "error",
+          "info": "Error"
+        },
+        {
+          "name": "success",
+          "info": "Success => channels: Array <string>"
+        }
+      ]
+    },
+    {
+      "name": "getSingleLiveEvent",
+      "description": "This endpoint allows to get details of a live event.",
+      "args": [
+        {
+          "name": "accessToken",
+          "type": "String",
+          "info": "Required: The valid accessToken."
+        },
+        {
+          "name": "liveEventId",
+          "type": "String",
+          "info": "Required: The numeric ID of the live event you want to fetch."
+        }
+      ],
+      "callbacks": [
+        {
+          "name": "error",
+          "info": "Error"
+        },
+        {
+          "name": "success",
+          "info": "Success => channels: Array <string>"
+        }
+      ]
+    },
+    {
+      "name": "generateShareableImage",
+      "description": "This endpoint allows to generate a shareable image for a comment.",
+      "args": [
+        {
+          "name": "accessToken",
+          "type": "String",
+          "info": "Required: The valid accessToken."
+        },
+        {
+          "name": "commentId",
+          "type": "String",
+          "info": "Required: The ID of the comment you want an image for."
+        }
+      ],
+      "callbacks": [
+        {
+          "name": "error",
+          "info": "Error"
+        },
+        {
+          "name": "success",
+          "info": "Success => channels: Array <string>"
+        }
+      ]
+    },
+    {
+      "name": "getTopics",
+      "description": "This endpoint allows to get list of topics.",
+      "args": [
+        {
+          "name": "accessToken",
+          "type": "String",
+          "info": "Required: The valid accessToken."
+        },
+        {
+          "name": "older",
+          "type": "String",
+          "info": "Optional: Filter parameter: get only records older than the provided id (format \"YYYY-MM-DD\")."
+        },
+        {
+          "name": "newer",
+          "type": "String",
+          "info": "Optional: Filter parameter: get only records newer than the provided id (format \"YYYY-MM-DD\")."
+        },
+        {
+          "name": "perPage",
+          "type": "String",
+          "info": "Optional: Filter parameter: define the amount of records sent per call (max 50)."
+        },
+        {
+          "name": "sortBy",
+          "type": "String",
+          "info": "Optional: Sort api response: valid parameters to sort by: created_at, id, updated_at."
+        },
+        {
+          "name": "order",
+          "type": "String",
+          "info": "Optional: Sort api response: valid parameters are desc and asc."
+        },
+        {
+          "name": "searchTrending",
+          "type": "String",
+          "info": "Optional: Filter parameter: can filter only trending topics."
+        },
+        {
+          "name": "searchFollowerId",
+          "type": "String",
+          "info": "Optional: Filter parameter: can filter topics by follower user id."
+        },
+        {
+          "name": "searchSlug",
+          "type": "String",
+          "info": "Optional: Filter parameter: filter by the slug of the url."
+        }
+      ],
+      "callbacks": [
+        {
+          "name": "error",
+          "info": "Error"
+        },
+        {
+          "name": "success",
+          "info": "Success => channels: Array <string>"
+        }
+      ]
+    },
+    {
+      "name": "getSingleTopic",
+      "description": "This endpoint allows to get details of a topic.",
+      "args": [
+        {
+          "name": "accessToken",
+          "type": "String",
+          "info": "Required: The valid accessToken."
+        },
+        {
+          "name": "topicId",
+          "type": "String",
+          "info": "Required: The numeric ID of the Topic you want to fetch."
+        }
+      ],
+      "callbacks": [
+        {
+          "name": "error",
+          "info": "Error"
+        },
+        {
+          "name": "success",
+          "info": "Success => channels: Array <string>"
+        }
+      ]
+    },
+    {
+      "name": "subscribeToPushNotifications",
+      "description": "This endpoint allows to subscribe a logged-in user to desktop push notifications.",
+      "args": [
+        {
+          "name": "accessToken",
+          "type": "String",
+          "info": "Required: The valid accessToken."
+        },
+        {
+          "name": "desktopPushToken",
+          "type": "String",
+          "info": "Optional: PushService Vendor Token for Desktop App Push Notifications (define one of those 3 tokens)."
+        },
+        {
+          "name": "mobilePushToken",
+          "type": "String",
+          "info": "Optional: PushService Vendor Token for Mobile App Push Notifications (define one of those 3 tokens)."
+        },
+        {
+          "name": "browserPushToken",
+          "type": "String",
+          "info": "Optional: PushService Vendor Token for Browser Push Notification (define one of those 3 tokens)."
+        }
+      ],
+      "callbacks": [
+        {
+          "name": "error",
+          "info": "Error"
+        },
+        {
+          "name": "success",
+          "info": "Success => channels: Array <string>"
+        }
+      ]
+    },
+    {
+      "name": "getComments",
+      "description": "This endpoint allows to fetch a stream of all recent comments.",
+      "args": [
+        {
+          "name": "accessToken",
+          "type": "String",
+          "info": "Required: The valid accessToken."
+        },
+        {
+          "name": "older",
+          "type": "String",
+          "info": "Optional: Filter parameter: get only records older than the provided id."
+        },
+        {
+          "name": "newer",
+          "type": "String",
+          "info": "Optional: Filter parameter: get only records newer than the provided id."
+        },
+        {
+          "name": "perPage",
+          "type": "String",
+          "info": "Optional: Filter parameter: define the amount of records sent per call (max 50)."
+        },
+        {
+          "name": "order",
+          "type": "String",
+          "info": "Optional: Filter parameter: define the order you want to receive the records (does not affect older/newer behaviour). Valid values are asc or desc.."
+        },
+        {
+          "name": "searchUserId",
+          "type": "String",
+          "info": "Optional: The id of a user you want to filter for. If you pass this id the user won't be nested."
+        },
+        {
+          "name": "searchPostId",
+          "type": "String",
+          "info": "Optional: The id of a post you want to filter for. If you pass this id the post won't be nested."
+        },
+        {
+          "name": "searchAmaEventId",
+          "type": "String",
+          "info": "Optional: The id of a post you want to filter for. If you pass this id the ama_event won't be nested."
+        }
+      ],
+      "callbacks": [
+        {
+          "name": "error",
+          "info": "Error"
+        },
+        {
+          "name": "success",
+          "info": "Success => channels: Array <string>"
+        }
+      ]
+    },
+    {
+      "name": "getUserComments",
+      "description": "This endpoint allows to fetch comments of a user (not nested).",
+      "args": [
+        {
+          "name": "accessToken",
+          "type": "String",
+          "info": "Required: The valid accessToken."
+        },
+        {
+          "name": "userId",
+          "type": "String",
+          "info": "Required: The ID of the user you want to fetch comments."
+        }
+      ],
+      "callbacks": [
+        {
+          "name": "error",
+          "info": "Error"
+        },
+        {
+          "name": "success",
+          "info": "Success => channels: Array <string>"
+        }
+      ]
+    },
+    {
+      "name": "getPostThreads",
+      "description": "This endpoint allows to fetch all threads of a post (nested and sorted).",
+      "args": [
+        {
+          "name": "accessToken",
+          "type": "String",
+          "info": "Required: The valid accessToken."
+        },
+        {
+          "name": "postId",
+          "type": "String",
+          "info": "Required: The id the post the comment belongs to (passed via URL)."
+        },
+        {
+          "name": "older",
+          "type": "String",
+          "info": "Optional: Filter parameter: get only records older than the provided id."
+        },
+        {
+          "name": "newer",
+          "type": "String",
+          "info": "Optional: Filter parameter: get only records newer than the provided id."
+        },
+        {
+          "name": "perPage",
+          "type": "String",
+          "info": "Optional: Filter parameter: define the amount of records sent per call (max 50)."
+        },
+        {
+          "name": "order",
+          "type": "String",
+          "info": "Optional: Filter parameter: define the order you want to receive the records (does not affect older/newer behaviour). Valid values are asc or desc."
+        }
+      ],
+      "callbacks": [
+        {
+          "name": "error",
+          "info": "Error"
+        },
+        {
+          "name": "success",
+          "info": "Success => channels: Array <string>"
+        }
+      ]
+    },
+    {
+      "name": "getLiveEventThreads",
+      "description": "This endpoint allows to fetch all threads of a live event (nested and sorted).",
+      "args": [
+        {
+          "name": "accessToken",
+          "type": "String",
+          "info": "Required: The valid accessToken."
+        },
+        {
+          "name": "liveEventId",
+          "type": "String",
+          "info": "Required: The id the live event the comment belongs to (passed via URL)."
+        },
+        {
+          "name": "older",
+          "type": "String",
+          "info": "Optional: Filter parameter: get only records older than the provided id."
+        },
+        {
+          "name": "newer",
+          "type": "String",
+          "info": "Optional: Filter parameter: get only records newer than the provided id."
+        },
+        {
+          "name": "perPage",
+          "type": "String",
+          "info": "Optional: Filter parameter: define the amount of records sent per call (max 50)."
+        },
+        {
+          "name": "order",
+          "type": "String",
+          "info": "Optional: Filter parameter: define the order you want to receive the records (does not affect older/newer behaviour). Valid values are asc or desc."
+        }
+      ],
+      "callbacks": [
+        {
+          "name": "error",
+          "info": "Error"
+        },
+        {
+          "name": "success",
+          "info": "Success => channels: Array <string>"
+        }
+      ]
+    },
+    {
+      "name": "getCommentVotes",
+      "description": "This endpoint allows to see all votes for a comment.",
+      "args": [
+        {
+          "name": "accessToken",
+          "type": "String",
+          "info": "Required: The valid accessToken."
+        },
+        {
+          "name": "commentId",
+          "type": "String",
+          "info": "Required: The ID of the comment you want to find votes for."
+        },
+        {
+          "name": "older",
+          "type": "String",
+          "info": "Optional: Filter parameter: get only records older than the provided id."
+        },
+        {
+          "name": "newer",
+          "type": "String",
+          "info": "Optional: Filter parameter: get only records newer than the provided id."
+        },
+        {
+          "name": "perPage",
+          "type": "String",
+          "info": "Optional: Filter parameter: define the amount of records sent per call (max 50)."
+        },
+        {
+          "name": "order",
+          "type": "String",
+          "info": "Optional: Filter parameter: define the order you want to receive the records (does not affect older/newer behaviour). Valid values are asc or desc."
+        }
+      ],
+      "callbacks": [
+        {
+          "name": "error",
+          "info": "Error"
+        },
+        {
+          "name": "success",
+          "info": "Success => channels: Array <string>"
+        }
+      ]
+    }
+  ]
+}

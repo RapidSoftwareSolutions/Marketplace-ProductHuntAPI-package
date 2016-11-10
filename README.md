@@ -407,6 +407,14 @@ This endpoint allows to get your own details.
 | accessToken| String| Required: The valid accessToken.
 | exclude    | String| Optional: Option to exclude certain values from the request. Options - "relationships".
 
+#### Request example
+```json
+
+{
+        "accessToken": "xxxxxxx"
+}
+```
+
 <a name="getFollowers"/>
 ## ProductHuntAPI.getFollowers
 This endpoint allows to get list all followers.
@@ -454,6 +462,14 @@ This endpoint allows to get user's interactions.
 | Field      | Type  | Description
 |------------|-------|----------
 | accessToken| String| Required: The valid accessToken.
+
+#### Request example
+```json
+
+{
+        "accessToken": "xxxxxxx"
+}
+```
 
 <a name="getLiveEvents"/>
 ## ProductHuntAPI.getLiveEvents
@@ -535,8 +551,7 @@ This endpoint allows to get list of topics.
 {
         "accessToken": "xxxxxxx",
 	"perPage": "10",
-	"order": "asc",
-	"searchFollowerId": "2016-11-01"
+	"order": "asc"
 }
 ```
 <a name="getSingleTopic"/>

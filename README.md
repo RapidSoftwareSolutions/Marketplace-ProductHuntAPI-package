@@ -55,6 +55,17 @@ This endpoint allows to get a token on behalf of a user.
 | redirectUri | credentials| Required: Your redirect uri.
 | code        | String     | Required: The access grant code you received via the callback from ProductHunt.
 
+#### Request example
+```json
+
+{
+        "clientId": "xxxxxxx",
+	"clientSecret": "xxxxxxxxxxxxx",
+	"redirectUri": "http://redirect_url.com",
+        "code": "xxxxxxxx"
+}
+```
+
 <a name="getClientAccessToken"/>
 ## ProductHuntAPI.getClientAccessToken
 This endpoint allows to get a token without user context. (eg before a user logs in). Please remember that this tokens limit you to public endpoints that don't require user context.
@@ -63,6 +74,15 @@ This endpoint allows to get a token without user context. (eg before a user logs
 |-------------|------------|----------
 | clientId    | credentials| Required: The id of your application obtained from ProductHunt.
 | clientSecret| credentials| Required: The secret of your application obtained from ProductHunt.
+
+#### Request example
+```json
+
+{
+        "clientId": "xxxxxxx",
+	"clientSecret": "xxxxxxxxxxxxx"
+}
+```
 
 <a name="getTechPosts"/>
 ## ProductHuntAPI.getTechPosts
@@ -78,6 +98,7 @@ This endpoint allows to get the tech posts of today.
 ```json
 
 {
+        "accessToken": "xxxxxxx",
 	"daysAgo": "3"
 }
 ```
@@ -96,6 +117,7 @@ This endpoint allows to get the posts of today for given category.
 ```json
 
 {
+        "accessToken": "xxxxxxx",
 	"categoryName": "games",
 	"daysAgo": "3"
 }
@@ -118,6 +140,7 @@ This endpoint allows to get all the newest posts.
 ```json
 
 {
+        "accessToken": "xxxxxxx",
 	"searchCategory": "games",
 	"perPage": "10"
 }
@@ -138,6 +161,7 @@ This endpoint allows to get all posts created by a user.
 ```json
 
 {
+        "accessToken": "xxxxxxx",
 	"userId": "705454",
 	"perPage": "10"
 }
@@ -158,6 +182,7 @@ This endpoint allows to get all posts made by a user.
 ```json
 
 {
+        "accessToken": "xxxxxxx",
 	"userId": "705454",
 	"perPage": "10"
 }
@@ -175,6 +200,7 @@ This endpoint allows to get details of a post.
 ```json
 
 {
+        "accessToken": "xxxxxxx",
 	"postId": "1"
 }
 ```
@@ -194,6 +220,7 @@ This endpoint allows to get all users.
 ```json
 
 {
+        "accessToken": "xxxxxxx",
 	"perPage": "10",
 	"order": "asc"
 }
@@ -212,6 +239,7 @@ This endpoint allows to get details of a user.
 ```json
 
 {
+        "accessToken": "xxxxxxx",
 	"userId": "1"
 }
 ```
@@ -236,6 +264,7 @@ This endpoint allows to get newest collections.
 ```json
 
 {
+        "accessToken": "xxxxxxx",
 	"perPage": "10",
 	"order": "asc"
 }
@@ -258,6 +287,7 @@ This endpoint allows to get all collections created by a user.
 ```json
 
 {
+        "accessToken": "xxxxxxx",
 	"userId": "705454",
 	"perPage": "10",
 	"order": "asc"
@@ -281,6 +311,7 @@ This endpoint allows to get all collections that include a certain post.
 ```json
 
 {
+        "accessToken": "xxxxxxx",
 	"postId": "1",
 	"perPage": "10",
 	"order": "asc"
@@ -299,6 +330,7 @@ This endpoint allows to get details of a collection.
 ```json
 
 {
+        "accessToken": "xxxxxxx",
 	"collectionId": "151104"
 }
 ```
@@ -316,6 +348,7 @@ This endpoint allows to receive your latest Post related notifications.
 ```json
 
 {
+        "accessToken": "xxxxxxx",
 	"perPage": "10"
 }
 ```
@@ -336,6 +369,7 @@ This endpoint allows to see all votes for a post.
 ```json
 
 {
+        "accessToken": "xxxxxxx",
 	"postId": "1",
 	"perPage": "10",
 	"order": "asc"
@@ -358,6 +392,7 @@ This endpoint allows to see all votes for a user.
 ```json
 
 {
+        "accessToken": "xxxxxxx",
 	"userId": "100",
 	"perPage": "10",
 	"order": "asc"
@@ -389,6 +424,7 @@ This endpoint allows to get list all followers.
 ```json
 
 {
+        "accessToken": "xxxxxxx",
 	"userId": "1",
 	"perPage": "10",
 	"order": "asc"
@@ -407,6 +443,7 @@ This endpoint allows to get user's interactions.
 ```json
 
 {
+        "accessToken": "xxxxxxx",
 	"include": "collected_post_ids"
 }
 ```
@@ -438,6 +475,7 @@ This endpoint allows to get list of live events.
 ```json
 
 {
+        "accessToken": "xxxxxxx",
 	"searchDate": "2016-11-01"
 }
 ```
@@ -454,6 +492,7 @@ This endpoint allows to get details of a live event.
 ```json
 
 {
+        "accessToken": "xxxxxxx",
 	"liveEventId": "683"
 }
 ```
@@ -470,6 +509,7 @@ This endpoint allows to generate a shareable image for a comment.
 ```json
 
 {
+        "accessToken": "xxxxxxx",
 	"commentId": "1"
 }
 ```
@@ -493,6 +533,7 @@ This endpoint allows to get list of topics.
 ```json
 
 {
+        "accessToken": "xxxxxxx",
 	"perPage": "10",
 	"order": "asc",
 	"searchFollowerId": "2016-11-01"
@@ -511,6 +552,7 @@ This endpoint allows to get details of a topic.
 ```json
 
 {
+        "accessToken": "xxxxxxx",
 	"topicId": "1"
 }
 ```
@@ -529,6 +571,7 @@ This endpoint allows to subscribe a logged-in user to desktop push notifications
 ```json
 
 {
+        "accessToken": "xxxxxxx",
 	"desktopPushToken": "Test"
 }
 ```
@@ -551,6 +594,7 @@ This endpoint allows to fetch a stream of all recent comments.
 ```json
 
 {
+        "accessToken": "xxxxxxx",
 	"perPage": "25"
 }
 ```
@@ -567,6 +611,7 @@ This endpoint allows to fetch comments of a user (not nested).
 ```json
 
 {
+        "accessToken": "xxxxxxx",
 	"userId": "1"
 }
 ```
@@ -587,6 +632,7 @@ This endpoint allows to fetch all threads of a post (nested and sorted).
 ```json
 
 {
+        "accessToken": "xxxxxxx",
 	"postId": "1",
 	"perPage": "10"
 }
@@ -608,6 +654,7 @@ This endpoint allows to fetch all threads of a live event (nested and sorted).
 ```json
 
 {
+        "accessToken": "xxxxxxx",
 	"liveEventId": "100",
 	"perPage": "10"
 }
@@ -629,6 +676,7 @@ This endpoint allows to see all votes for a comment.
 ```json
 
 {
+        "accessToken": "xxxxxxx",
 	"commentId": "100",
 	"perPage": "10"
 }

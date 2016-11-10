@@ -4,7 +4,7 @@ The API makes it easy to work with ProductHunt.
 * Credentials: clientId, clientSecret, redirectUri
 
 ## How to get credentials: 
-0. Log in on Producthunt website.
+0. Log in on [Producthunt website](https://www.producthunt.com/).
 1. Go to [API Dashboard](https://www.producthunt.com/v1/oauth/applications)
 2. Add new application.
 3. After creating a new app you will see client ID, client Secret and redirect URI.

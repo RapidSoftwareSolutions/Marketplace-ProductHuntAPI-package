@@ -57,7 +57,8 @@ $app->post('/api/ProductHuntAPI/generateShareableImage', function ($request, $re
         $resp = $client->get( $query_str, 
             [
                 'headers' => $headers,
-                'query' => $query
+                'query' => $query,
+                'allow_redirects' => false
             ]);
         $responseBody = $resp->getBody()->getContents();
   

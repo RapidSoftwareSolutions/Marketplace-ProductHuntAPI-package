@@ -7,7 +7,7 @@
     "keywords": ["API", "angellist", "discovery", "post", "product", "publication", "social", "tech"],
     "accounts": {
         "domain": "producthunt.com",
-        "credentials": ["clientId", "clientSecret", "redirectUri"]
+        "credentials": ["clientId", "clientSecret"]
     },
     "blocks": [{
             "name": "getUserAccessToken",
@@ -24,7 +24,7 @@
                     "required": true
                 }, {
                     "name": "redirectUri",
-                    "type": "credentials",
+                    "type": "String",
                     "info": "Your redirect uri.",
                     "required": true
                 }, {

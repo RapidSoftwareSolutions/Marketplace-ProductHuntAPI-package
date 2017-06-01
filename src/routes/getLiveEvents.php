@@ -54,16 +54,19 @@ $app->post('/api/ProductHuntAPI/getLiveEvents', function ($request, $response, $
         $query['per_page'] = $post_data['args']['perPage'];
     }
     if(!empty($post_data['args']['older'])) {
-        $query['older'] = $post_data['args']['older'];
+        $date = new DateTime($post_data['args']['older']);
+        $query['older'] = $date->format('Y-m-d');
     }
     if(!empty($post_data['args']['newer'])) {
-        $query['newer'] = $post_data['args']['newer'];
+        $date = new DateTime($post_data['args']['newer']);
+        $query['newer'] = $date->format('Y-m-d');
     }
     if(!empty($post_data['args']['searchCategory'])) {
         $query['search[category]'] = $post_data['args']['searchCategory'];
     }
     if(!empty($post_data['args']['searchDate'])) {
-        $query['search[date]'] = $post_data['args']['searchDate'];
+        $date = new DateTime($post_data['args']['searchDate']);
+        $query['search[date]'] = $date->format('Y-m-d');
     }
     if(!empty($post_data['args']['searchLiveVideo'])) {
         $query['search[live_video]'] = $post_data['args']['searchLiveVideo'];

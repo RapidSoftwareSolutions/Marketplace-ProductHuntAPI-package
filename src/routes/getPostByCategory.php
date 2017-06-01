@@ -52,7 +52,8 @@ $app->post('/api/ProductHuntAPI/getPostByCategory', function ($request, $respons
         $query['days_ago'] = $post_data['args']['daysAgo'];
     }
     if(!empty($post_data['args']['day'])) {
-        $query['day'] = $post_data['args']['day'];
+        $date = new DateTime($post_data['args']['day']);
+        $query['day'] = $date->format('Y-m-d');
     }
    
     $client = $this->httpClient;

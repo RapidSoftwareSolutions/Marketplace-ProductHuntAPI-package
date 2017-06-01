@@ -48,10 +48,12 @@ $app->post('/api/ProductHuntAPI/getTopics', function ($request, $response, $args
     
     $query = [];
     if(!empty($post_data['args']['older'])) {
-        $query['older'] = $post_data['args']['older'];
+        $date = new DateTime($post_data['args']['older']);
+        $query['older'] = $date->format('Y-m-d');
     }
     if(!empty($post_data['args']['newer'])) {
-        $query['newer'] = $post_data['args']['newer'];
+        $date = new DateTime($post_data['args']['newer']);
+        $query['newer'] = $date->format('Y-m-d');
     }
     if(!empty($post_data['args']['perPage'])) {
         $query['per_page'] = $post_data['args']['perPage'];

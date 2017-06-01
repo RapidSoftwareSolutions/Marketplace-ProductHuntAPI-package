@@ -49,7 +49,8 @@ $app->post('/api/ProductHuntAPI/getTechPosts', function ($request, $response, $a
         $query['days_ago'] = $post_data['args']['daysAgo'];
     }
     if(!empty($post_data['args']['day'])) {
-        $query['day'] = $post_data['args']['day'];
+        $date = new DateTime($post_data['args']['day']);
+        $query['day'] = $date->format('Y-m-d');
     }
    
     $client = $this->httpClient;

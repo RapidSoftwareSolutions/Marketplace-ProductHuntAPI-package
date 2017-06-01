@@ -76,7 +76,7 @@
                     "required": false
                 }, {
                     "name": "day",
-                    "type": "String",
+                    "type": "DatePicker",
                     "info": "Alternate parameter for requesting specific days (Format: day=YYYY-MM-DD).",
                     "required": false
                 }],
@@ -107,7 +107,7 @@
                     "required": false
                 }, {
                     "name": "day",
-                    "type": "String",
+                    "type": "DatePicker",
                     "info": "Alternate parameter for requesting specific days (Format: day=YYYY-MM-DD).",
                     "required": false
                 }],
@@ -349,7 +349,8 @@
                     "required": false
                 }, {
                     "name": "sortBy",
-                    "type": "String",
+                    "type": "Select",
+                    "options": ["created_at","updated_at","featured_at"],
                     "info": "Filter parameter: valid values are created_at, updated_at or featured_at.",
                     "required": false
                 }, {
@@ -410,7 +411,8 @@
                     "required": false
                 }, {
                     "name": "sortBy",
-                    "type": "String",
+                    "type": "Select",
+                    "options": ["created_at","updated_at","featured_at"],
                     "info": "Filter parameter: valid values are created_at, updated_at or featured_at.",
                     "required": false
                 }, {
@@ -456,7 +458,8 @@
                     "required": false
                 }, {
                     "name": "sortBy",
-                    "type": "String",
+                    "type": "Select",
+                    "options": ["created_at","updated_at","featured_at"],
                     "info": "Filter parameter: valid values are created_at, updated_at or featured_at.",
                     "required": false
                 }, {
@@ -673,7 +676,8 @@
                     "required": true
                 }, {
                     "name": "include",
-                    "type": "String",
+                    "type": "Select",
+                    "options": ["following_user_ids","voted_post_ids","voted_comment_ids","collected_post_ids","subscribed_collection_ids","subscribed_live_event_ids","followed_topics_ids"],
                     "info": "Interactions to be included. Possible values: following_user_ids, voted_post_ids, voted_comment_ids, collected_post_ids, subscribed_collection_ids, subscribed_live_event_ids, followed_topics_ids.",
                     "required": false
                 }],
@@ -720,12 +724,12 @@
                     "required": false
                 }, {
                     "name": "older",
-                    "type": "String",
+                    "type": "DatePicker",
                     "info": "Filter parameter: get only records with older \"start_at\" date than the provided date (format \"YYYY-MM-DD\").",
                     "required": false
                 }, {
                     "name": "newer",
-                    "type": "String",
+                    "type": "DatePicker",
                     "info": "Filter parameter: get only records with newer \"start_at\" date (includes events with unspeficifed date) than the provided date (format \"YYYY-MM-DD\").",
                     "required": false
                 }, {
@@ -735,7 +739,7 @@
                     "required": false
                 }, {
                     "name": "searchDate",
-                    "type": "String",
+                    "type": "DatePicker",
                     "info": "Retrieve events for a specific month (format \"YYYY-MM\"), use \false\" for events without a start_at date.",
                     "required": false
                 }, {
@@ -808,12 +812,12 @@
                     "required": true
                 }, {
                     "name": "older",
-                    "type": "String",
+                    "type": "DatePicker",
                     "info": "Filter parameter: get only records older than the provided id (format \"YYYY-MM-DD\").",
                     "required": false
                 }, {
                     "name": "newer",
-                    "type": "String",
+                    "type": "DatePicker",
                     "info": "Filter parameter: get only records newer than the provided id (format \"YYYY-MM-DD\").",
                     "required": false
                 }, {
@@ -823,12 +827,14 @@
                     "required": false
                 }, {
                     "name": "sortBy",
-                    "type": "String",
+                    "type": "Select",
+                    "options": ["created_at","updated_at","featured_at"],
                     "info": "Sort api response: valid parameters to sort by: created_at, id, updated_at.",
                     "required": false
                 }, {
                     "name": "order",
-                    "type": "String",
+                    "type": "Select",
+                    "options": ["desc","asc"],
                     "info": "Sort api response: valid parameters are desc and asc.",
                     "required": false
                 }, {
@@ -931,7 +937,8 @@
                     "required": false
                 }, {
                     "name": "order",
-                    "type": "String",
+                    "type": "Select",
+                    "options": ["desc","asc"],
                     "info": "Filter parameter: define the order you want to receive the records (does not affect older\/newer behaviour). Valid values are asc or desc..",
                     "required": false
                 }, {
@@ -1049,7 +1056,8 @@
                     "required": false
                 }, {
                     "name": "order",
-                    "type": "String",
+                    "type": "Select",
+                    "options": ["desc","asc"],
                     "info": "Filter parameter: define the order you want to receive the records (does not affect older\/newer behaviour). Valid values are asc or desc.",
                     "required": false
                 }],
@@ -1090,7 +1098,8 @@
                     "required": false
                 }, {
                     "name": "order",
-                    "type": "String",
+                    "type": "Select",
+                    "options": ["desc","asc"],
                     "info": "Filter parameter: define the order you want to receive the records (does not affect older\/newer behaviour). Valid values are asc or desc.",
                     "required": false
                 }],

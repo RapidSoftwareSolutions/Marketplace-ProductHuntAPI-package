@@ -58,7 +58,7 @@ This endpoint allows to get the posts of today for given category.
 | accessToken | String| Required: The valid accessToken.
 | categoryName| String| Required: The name of the category.
 | daysAgo     | String| Optional: Parameter for pagination.
-| DatePicker         | String| Optional: Alternate parameter for requesting specific days (Format: day=YYYY-MM-DD).
+| day         | DatePicker| Optional: Alternate parameter for requesting specific days (Format: day=YYYY-MM-DD).
 
 
 ## ProductHuntAPI.getAllPosts
@@ -117,7 +117,7 @@ This endpoint allows to get all users.
 | older      | String| Optional: Filter parameter: get only records older than the provided id.
 | newer      | String| Optional: Filter parameter: get only records newer than the provided id.
 | perPage    | String| Optional: Filter parameter: define the amount of records sent per call (max 50).
-| order      | String| Optional: Filter parameter: define the order you want to receive the records (does not affect older/newer behaviour). Valid values are asc or desc.
+| order      | Select| Optional: Filter parameter: define the order you want to receive the records (does not affect older/newer behaviour). Valid values are asc or desc.
 
 
 ## ProductHuntAPI.getSingleUser
@@ -204,7 +204,7 @@ This endpoint allows to see all votes for a post.
 | older      | String| Optional: Filter parameter: get only records older than the provided id.
 | newer      | String| Optional: Filter parameter: get only records newer than the provided id.
 | perPage    | String| Optional: Filter parameter: define the amount of records sent per call (max 50).
-| order      | String| Optional: Filter parameter: define the order you want to receive the records (does not affect older/newer behaviour). Valid values are asc or desc.
+| order      | Select| Optional: Filter parameter: define the order you want to receive the records (does not affect older/newer behaviour). Valid values are asc or desc.
 
 
 ## ProductHuntAPI.getUserVotes
@@ -217,7 +217,7 @@ This endpoint allows to see all votes for a user.
 | older      | String| Optional: Filter parameter: get only records older than the provided id.
 | newer      | String| Optional: Filter parameter: get only records newer than the provided id.
 | perPage    | String| Optional: Filter parameter: define the amount of records sent per call (max 50).
-| order      | String| Optional: Filter parameter: define the order you want to receive the records (does not affect older/newer behaviour). Valid values are asc or desc.
+| order      | Select| Optional: Filter parameter: define the order you want to receive the records (does not affect older/newer behaviour). Valid values are asc or desc.
 
 
 ## ProductHuntAPI.getMySettings
@@ -239,7 +239,7 @@ This endpoint allows to get list all followers.
 | older      | String| Optional: Filter parameter: get only records older than the provided id.
 | newer      | String| Optional: Filter parameter: get only records newer than the provided id.
 | perPage    | String| Optional: Filter parameter: define the amount of records sent per call (max 50).
-| order      | String| Optional: Filter parameter: define the order you want to receive the records (does not affect older/newer behaviour). Valid values are asc or desc.
+| order      | Select| Optional: Filter parameter: define the order you want to receive the records (does not affect older/newer behaviour). Valid values are asc or desc.
 
 
 ## ProductHuntAPI.getInteractions
@@ -363,7 +363,7 @@ This endpoint allows to fetch all threads of a post (nested and sorted).
 | older      | String| Optional: Filter parameter: get only records older than the provided id.
 | newer      | String| Optional: Filter parameter: get only records newer than the provided id.
 | perPage    | String| Optional: Filter parameter: define the amount of records sent per call (max 50).
-| order      | String| Optional: Filter parameter: define the order you want to receive the records (does not affect older/newer behaviour). Valid values are asc or desc.
+| order      | Select| Optional: Filter parameter: define the order you want to receive the records (does not affect older/newer behaviour). Valid values are asc or desc.
 
 
 ## ProductHuntAPI.getLiveEventThreads

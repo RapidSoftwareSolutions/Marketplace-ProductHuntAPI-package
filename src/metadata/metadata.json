@@ -282,7 +282,8 @@
                     "required": false
                 }, {
                     "name": "order",
-                    "type": "String",
+                    "type": "Select",
+                    "options": ["asc","desc"],
                     "info": "Filter parameter: define the order you want to receive the records (does not affect older\/newer behaviour). Valid values are asc or desc.",
                     "required": false
                 }],
@@ -344,7 +345,8 @@
                     "required": false
                 }, {
                     "name": "order",
-                    "type": "String",
+                    "type": "Select",
+                    "options": ["asc","desc"],
                     "info": "Filter parameter: define the order you want to receive the records (does not affect older\/newer behaviour). Valid values are asc or desc.",
                     "required": false
                 }, {
@@ -406,7 +408,8 @@
                     "required": false
                 }, {
                     "name": "order",
-                    "type": "String",
+                    "type": "Select",
+                    "options": ["asc","desc"],
                     "info": "Filter parameter: define the order you want to receive the records (does not affect older\/newer behaviour). Valid values are asc or desc.",
                     "required": false
                 }, {
@@ -453,7 +456,8 @@
                     "required": false
                 }, {
                     "name": "order",
-                    "type": "String",
+                    "type": "Select",
+                    "options": ["asc","desc"],
                     "info": "Filter parameter: define the order you want to receive the records (does not affect older\/newer behaviour). Valid values are asc or desc.",
                     "required": false
                 }, {
@@ -552,7 +556,8 @@
                     "required": false
                 }, {
                     "name": "order",
-                    "type": "String",
+                    "type": "Select",
+                    "options": ["asc","desc"],
                     "info": "Filter parameter: define the order you want to receive the records (does not affect older\/newer behaviour). Valid values are asc or desc.",
                     "required": false
                 }],
@@ -593,7 +598,8 @@
                     "required": false
                 }, {
                     "name": "order",
-                    "type": "String",
+                    "type": "Select",
+                    "options": ["asc","desc"],
                     "info": "Filter parameter: define the order you want to receive the records (does not affect older\/newer behaviour). Valid values are asc or desc.",
                     "required": false
                 }],
@@ -655,7 +661,8 @@
                     "required": false
                 }, {
                     "name": "order",
-                    "type": "String",
+                    "type": "Select",
+                    "options": ["asc","desc"],
                     "info": "Filter parameter: define the order you want to receive the records (does not affect older\/newer behaviour). Valid values are asc or desc.",
                     "required": false
                 }],
@@ -1015,7 +1022,8 @@
                     "required": false
                 }, {
                     "name": "order",
-                    "type": "String",
+                    "type": "Select",
+                    "options": ["asc","desc"],
                     "info": "Filter parameter: define the order you want to receive the records (does not affect older\/newer behaviour). Valid values are asc or desc.",
                     "required": false
                 }],

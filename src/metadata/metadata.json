@@ -9,6 +9,13 @@
         "domain": "producthunt.com",
         "credentials": ["clientId", "clientSecret"]
     },
+    "steps": [
+        "Log in on Producthunt website (https://www.producthunt.com/)",
+        "Go to API Dashboard (https://www.producthunt.com/v1/oauth/applications)",
+        "Add new application",
+        "After creating a new app you will see client ID, client Secret and redirect URI",
+        "To generate authorization code use the getClientAccessToken (https://rapidapi.com/package/ProductHuntAPI/functions/getClientAccessToken) endpoint"
+    ]
     "blocks": [{
             "name": "getUserAccessToken",
             "description": "This endpoint allows to get a token on behalf of a user.",

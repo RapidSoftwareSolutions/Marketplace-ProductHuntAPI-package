@@ -10,7 +10,7 @@ Retrieve ProductHunt posts, users and categories.
 1. Go to [API Dashboard](https://www.producthunt.com/v1/oauth/applications)
 2. Add new application.
 3. After creating a new app you will see client ID, client Secret and redirect URI.
-4. To generate authorization code use the [getClientAccessToken](https://rapidapi.com/package/ProductHuntAPI/functions/getClientAccessToken) Endpoint
+4. To generate authorization code use the [getClientAccessToken](https://rapidapi.com/package/ProductHuntAPI/functions/getClientAccessToken) endpoint.
 ## Custom datatypes:
  |Datatype|Description|Example
  |--------|-----------|----------

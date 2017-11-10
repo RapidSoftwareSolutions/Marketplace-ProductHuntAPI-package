@@ -534,7 +534,7 @@
                 },
                 {
                     "name":"page",
-                    "type":"String",
+                    "type":"Number",
                     "info":"Parameter for pagination.",
                     "required":false
                 },
@@ -605,7 +605,7 @@
                 },
                 {
                     "name":"page",
-                    "type":"String",
+                    "type":"Number",
                     "info":"Parameter for pagination.",
                     "required":false
                 },

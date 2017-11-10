@@ -155,7 +155,7 @@ This endpoint allows to get all collections created by a user.
 |---------------|-------|----------
 | accessToken   | String| Required: The valid accessToken.
 | userId        | String| Required: The valid user ID.
-| page          | String| Optional: Parameter for pagination.
+| page          | Number| Optional: Parameter for pagination.
 | perPage       | Number| Optional: Filter parameter: define the amount of records sent per call (max 50).
 | order         | Select| Optional: Filter parameter: define the order you want to receive the records (does not affect older/newer behaviour). Valid values are asc or desc.
 | sortBy        | String| Optional: Filter parameter: valid values are created_at, updated_at or featured_at.
@@ -169,7 +169,7 @@ This endpoint allows to get all collections that include a certain post.
 |---------------|-------|----------
 | accessToken   | String| Required: The valid accessToken.
 | postId        | String| Required: The valid post ID.
-| page          | String| Optional: Parameter for pagination.
+| page          | Number| Optional: Parameter for pagination.
 | perPage       | Number| Optional: Filter parameter: define the amount of records sent per call (max 50).
 | order         | Select| Optional: Filter parameter: define the order you want to receive the records (does not affect older/newer behaviour). Valid values are asc or desc.
 | sortBy        | String| Optional: Filter parameter: valid values are created_at, updated_at or featured_at.

@@ -2,15 +2,18 @@
 
 # ProductHuntAPI Package
 Retrieve ProductHunt posts, users and categories.
-* Domain: producthunt.com
+
+* Domain: [producthunt.com](https://www.producthunt.com/)
 * Credentials: clientId, clientSecret, redirectUri
 
 ## How to get credentials: 
-0. Log in on [Producthunt website](https://www.producthunt.com/).
+
+0. Log in on [Producthunt website](https://www.producthunt.com/)
 1. Go to [API Dashboard](https://www.producthunt.com/v1/oauth/applications)
 2. Add new application.
 3. After creating a new app you will see client ID, client Secret and redirect URI.
 4. To generate authorization code use the [getClientAccessToken](https://rapidapi.com/package/ProductHuntAPI/functions/getClientAccessToken) endpoint.
+
 ## Custom datatypes:
  |Datatype|Description|Example
  |--------|-----------|----------
@@ -71,7 +74,7 @@ This endpoint allows to get all the newest posts.
 | searchTopic   | String| Optional: Filter parameter: can filter posts by topic id or slug. Default = unspecified (All topics).
 | older         | String| Optional: Filter parameter: get only records older than the provided id.
 | newer         | String| Optional: Filter parameter: get only records newer than the provided id.
-| perPage       | String| Optional: Filter parameter: define the amount of records sent per call (max 50).
+| perPage       | Number| Optional: Filter parameter: define the amount of records sent per call (max 50).
 
 
 ## ProductHuntAPI.getPostsCreatedByUser
@@ -95,7 +98,7 @@ This endpoint allows to get all posts made by a user.
 | userId     | String| Required: The valid user ID.
 | older      | String| Optional: Filter parameter: get only records older than the provided id.
 | newer      | String| Optional: Filter parameter: get only records newer than the provided id.
-| perPage    | String| Optional: Filter parameter: define the amount of records sent per call (max 50).
+| perPage    | Number| Optional: Filter parameter: define the amount of records sent per call (max 50).
 
 
 ## ProductHuntAPI.getPost
@@ -115,7 +118,7 @@ This endpoint allows to get all users.
 | accessToken| String| Required: The valid accessToken.
 | older      | String| Optional: Filter parameter: get only records older than the provided id.
 | newer      | String| Optional: Filter parameter: get only records newer than the provided id.
-| perPage    | String| Optional: Filter parameter: define the amount of records sent per call (max 50).
+| perPage    | Number| Optional: Filter parameter: define the amount of records sent per call (max 50).
 | order      | Select| Optional: Filter parameter: define the order you want to receive the records (does not affect older/newer behaviour). Valid values are asc or desc.
 
 
@@ -137,11 +140,10 @@ This endpoint allows to get newest collections.
 | accessToken   | String| Required: The valid accessToken.
 | older         | String| Optional: Filter parameter: get only records older than the provided id.
 | newer         | String| Optional: Filter parameter: get only records newer than the provided id.
-| perPage       | String| Optional: Filter parameter: define the amount of records sent per call (max 50).
+| perPage       | Number| Optional: Filter parameter: define the amount of records sent per call (max 50).
 | order         | Select| Optional: Filter parameter: define the order you want to receive the records (does not affect older/newer behaviour). Valid values are asc or desc.
 | sortBy        | String| Optional: Filter parameter: valid values are created_at, updated_at or featured_at.
 | searchFeatured| String| Optional: Only return collections that have been featured on Product Hunt. true or false. Default = false.
-| searchCategory| String| Optional: Only return collections from certain category. Default = unspecified (All categories).
 | searchSlug    | String| Optional: Filter by the url slug of the collection.
 | searchUsername| String| Optional: Filter by the username of the creator of the collection.
 
@@ -154,7 +156,7 @@ This endpoint allows to get all collections created by a user.
 | accessToken   | String| Required: The valid accessToken.
 | userId        | String| Required: The valid user ID.
 | page          | String| Optional: Parameter for pagination.
-| perPage       | String| Optional: Filter parameter: define the amount of records sent per call (max 50).
+| perPage       | Number| Optional: Filter parameter: define the amount of records sent per call (max 50).
 | order         | Select| Optional: Filter parameter: define the order you want to receive the records (does not affect older/newer behaviour). Valid values are asc or desc.
 | sortBy        | String| Optional: Filter parameter: valid values are created_at, updated_at or featured_at.
 | searchFeatured| String| Optional: Only return collections that have been featured on Product Hunt. true or false. Default = false.
@@ -168,7 +170,7 @@ This endpoint allows to get all collections that include a certain post.
 | accessToken   | String| Required: The valid accessToken.
 | postId        | String| Required: The valid post ID.
 | page          | String| Optional: Parameter for pagination.
-| perPage       | String| Optional: Filter parameter: define the amount of records sent per call (max 50).
+| perPage       | Number| Optional: Filter parameter: define the amount of records sent per call (max 50).
 | order         | Select| Optional: Filter parameter: define the order you want to receive the records (does not affect older/newer behaviour). Valid values are asc or desc.
 | sortBy        | String| Optional: Filter parameter: valid values are created_at, updated_at or featured_at.
 | searchFeatured| String| Optional: Only return collections that have been featured on Product Hunt. true or false. Default = false.
@@ -189,7 +191,7 @@ This endpoint allows to receive your latest Post related notifications.
 | Field      | Type  | Description
 |------------|-------|----------
 | accessToken| String| Required: The valid accessToken.
-| perPage    | String| Optional: Filter parameter: define the amount of records sent per call (max 50).
+| perPage    | Number| Optional: Filter parameter: define the amount of records sent per call (max 50).
 | searchType | String| Optional: Type of reference object accepted, defaults to 'Post', use 'all' for every notification type.
 
 
@@ -202,7 +204,7 @@ This endpoint allows to see all votes for a post.
 | postId     | String| Required: The ID of the post you want to find votes for.
 | older      | String| Optional: Filter parameter: get only records older than the provided id.
 | newer      | String| Optional: Filter parameter: get only records newer than the provided id.
-| perPage    | String| Optional: Filter parameter: define the amount of records sent per call (max 50).
+| perPage    | Number| Optional: Filter parameter: define the amount of records sent per call (max 50).
 | order      | Select| Optional: Filter parameter: define the order you want to receive the records (does not affect older/newer behaviour). Valid values are asc or desc.
 
 
@@ -215,7 +217,7 @@ This endpoint allows to see all votes for a user.
 | userId     | String| Required: The ID of the user you want to find votes for.
 | older      | String| Optional: Filter parameter: get only records older than the provided id.
 | newer      | String| Optional: Filter parameter: get only records newer than the provided id.
-| perPage    | String| Optional: Filter parameter: define the amount of records sent per call (max 50).
+| perPage    | Number| Optional: Filter parameter: define the amount of records sent per call (max 50).
 | order      | Select| Optional: Filter parameter: define the order you want to receive the records (does not affect older/newer behaviour). Valid values are asc or desc.
 
 
@@ -237,7 +239,7 @@ This endpoint allows to get list all followers.
 | userId     | String| Required: The ID of the user you want to fetch all followers from.
 | older      | String| Optional: Filter parameter: get only records older than the provided id.
 | newer      | String| Optional: Filter parameter: get only records newer than the provided id.
-| perPage    | String| Optional: Filter parameter: define the amount of records sent per call (max 50).
+| perPage    | Number| Optional: Filter parameter: define the amount of records sent per call (max 50).
 | order      | Select| Optional: Filter parameter: define the order you want to receive the records (does not affect older/newer behaviour). Valid values are asc or desc.
 
 
@@ -251,7 +253,7 @@ This endpoint allows to get user's interactions.
 
 
 ## ProductHuntAPI.getCategories
-This endpoint allows to get user's interactions.
+This endpoint allows to get categories.
 
 | Field      | Type  | Description
 |------------|-------|----------
@@ -265,10 +267,9 @@ This endpoint allows to get list of live events.
 |----------------|-------|----------
 | accessToken    | String| Required: The valid accessToken.
 | offset         | String| Optional: Filter parameter: define the amount of records to be skipped.
-| perPage        | String| Optional: Filter parameter: define the amount of records sent per call (default 20, max 50).
+| perPage        | Number| Optional: Filter parameter: define the amount of records sent per call (default 20, max 50).
 | older          | DatePicker| Optional: Filter parameter: get only records with older "start_at" date than the provided date (format "YYYY-MM-DD").
 | newer          | DatePicker| Optional: Filter parameter: get only records with newer "start_at" date (includes events with unspeficifed date) than the provided date (format "YYYY-MM-DD").
-| searchCategory | String| Optional: Retrieve events for a specific category.
 | searchDate     | DatePicker| Optional: Retrieve events for a specific month (format "YYYY-MM"), use alse" for events without a start_at date.
 | searchLiveVideo| String| Optional: Retrieve LIVE on camera events. true or false. Default: false.
 | searchSlug     | String| Optional: Filter by the url slug of the collection.
@@ -300,7 +301,7 @@ This endpoint allows to get list of topics.
 | accessToken     | String| Required: The valid accessToken.
 | older           | DatePicker| Optional: Filter parameter: get only records older than the provided id (format "YYYY-MM-DD").
 | newer           | DatePicker| Optional: Filter parameter: get only records newer than the provided id (format "YYYY-MM-DD").
-| perPage         | String| Optional: Filter parameter: define the amount of records sent per call (max 50).
+| perPage         | Number| Optional: Filter parameter: define the amount of records sent per call (max 50).
 | sortBy          | String| Optional: Sort api response: valid parameters to sort by: created_at, id, updated_at.
 | order           | Select| Optional: Sort api response: valid parameters are desc and asc.
 | searchTrending  | String| Optional: Filter parameter: can filter only trending topics.
@@ -336,7 +337,7 @@ This endpoint allows to fetch a stream of all recent comments.
 | accessToken     | String| Required: The valid accessToken.
 | older           | String| Optional: Filter parameter: get only records older than the provided id.
 | newer           | String| Optional: Filter parameter: get only records newer than the provided id.
-| perPage         | String| Optional: Filter parameter: define the amount of records sent per call (max 50).
+| perPage         | Number| Optional: Filter parameter: define the amount of records sent per call (max 50).
 | order           | Select| Optional: Filter parameter: define the order you want to receive the records (does not affect older/newer behaviour). Valid values are asc or desc..
 | searchUserId    | String| Optional: The id of a user you want to filter for. If you pass this id the user won't be nested.
 | searchPostId    | String| Optional: The id of a post you want to filter for. If you pass this id the post won't be nested.
@@ -361,7 +362,7 @@ This endpoint allows to fetch all threads of a post (nested and sorted).
 | postId     | String| Required: The id the post the comment belongs to (passed via URL).
 | older      | String| Optional: Filter parameter: get only records older than the provided id.
 | newer      | String| Optional: Filter parameter: get only records newer than the provided id.
-| perPage    | String| Optional: Filter parameter: define the amount of records sent per call (max 50).
+| perPage    | Number| Optional: Filter parameter: define the amount of records sent per call (max 50).
 | order      | Select| Optional: Filter parameter: define the order you want to receive the records (does not affect older/newer behaviour). Valid values are asc or desc.
 
 
@@ -374,7 +375,7 @@ This endpoint allows to fetch all threads of a live event (nested and sorted).
 | liveEventId| String| Required: The id the live event the comment belongs to (passed via URL).
 | older      | String| Optional: Filter parameter: get only records older than the provided id.
 | newer      | String| Optional: Filter parameter: get only records newer than the provided id.
-| perPage    | String| Optional: Filter parameter: define the amount of records sent per call (max 50).
+| perPage    | Number| Optional: Filter parameter: define the amount of records sent per call (max 50).
 | order      | Select| Optional: Filter parameter: define the order you want to receive the records (does not affect older/newer behaviour). Valid values are asc or desc.
 
 
@@ -387,6 +388,6 @@ This endpoint allows to see all votes for a comment.
 | commentId  | String| Required: The ID of the comment you want to find votes for.
 | older      | String| Optional: Filter parameter: get only records older than the provided id.
 | newer      | String| Optional: Filter parameter: get only records newer than the provided id.
-| perPage    | String| Optional: Filter parameter: define the amount of records sent per call (max 50).
+| perPage    | Number| Optional: Filter parameter: define the amount of records sent per call (max 50).
 | order      | Select| Optional: Filter parameter: define the order you want to receive the records (does not affect older/newer behaviour). Valid values are asc or desc.
 

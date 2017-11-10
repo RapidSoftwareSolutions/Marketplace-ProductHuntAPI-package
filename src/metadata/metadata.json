@@ -1,1129 +1,1518 @@
 {
-    "package": "ProductHuntAPI",
-    "tagline": "ProductHunt API Wrapper",
-    "description": "Retrieve ProductHunt posts, users and categories.",
-    "image": "http:\/\/logo.clearbit.com\/producthunt.com",
-    "repo": "https:\/\/github.com\/RapidSoftwareSolutions\/Marketplace-ProductHuntAPI-package",
-    "keywords": ["API", "angellist", "discovery", "post", "product", "publication", "social", "tech"],
-    "accounts": {
-        "domain": "producthunt.com",
-        "credentials": ["clientId", "clientSecret"]
+    "package":"ProductHuntAPI",
+    "tagline":"ProductHunt API Wrapper",
+    "description":"Retrieve ProductHunt posts, users and categories.",
+    "image":"http:\/\/logo.clearbit.com\/producthunt.com",
+    "repo":"https:\/\/github.com\/RapidSoftwareSolutions\/Marketplace-ProductHuntAPI-package",
+    "keywords":[
+        "API",
+        "angellist",
+        "discovery",
+        "post",
+        "product",
+        "publication",
+        "social",
+        "tech"
+    ],
+    "accounts":{
+        "domain":"producthunt.com",
+        "credentials":[
+            "clientId",
+            "clientSecret"
+        ]
     },
-    "steps": [
+    "steps":[
         "Log in on Producthunt website (https://www.producthunt.com/)",
         "Go to API Dashboard (https://www.producthunt.com/v1/oauth/applications)",
         "Add new application",
         "After creating a new app you will see client ID, client Secret and redirect URI",
         "To generate authorization code use the getClientAccessToken (https://rapidapi.com/package/ProductHuntAPI/functions/getClientAccessToken) endpoint"
     ],
-    "blocks": [{
-            "name": "getUserAccessToken",
-            "description": "This endpoint allows to get a token on behalf of a user.",
-            "args": [{
-                    "name": "clientId",
-                    "type": "credentials",
-                    "info": "The id of your application obtained from ProductHunt.",
-                    "required": true
-                }, {
-                    "name": "clientSecret",
-                    "type": "credentials",
-                    "info": "The secret of your application obtained from ProductHunt.",
-                    "required": true
-                }, {
-                    "name": "redirectUri",
-                    "type": "String",
-                    "info": "Your redirect uri.",
-                    "required": true
-                }, {
-                    "name": "code",
-                    "type": "String",
-                    "info": "The access grant code you received via the callback from ProductHunt.",
-                    "required": true
-                }],
-            "callbacks": [{
-                    "name": "error",
-                    "info": "Error"
-                }, {
-                    "name": "success",
-                    "info": "Success"
-                }]
-        }, {
-            "name": "getClientAccessToken",
-            "description": "This endpoint allows to get a token without user context. (eg before a user logs in). Please remember that this tokens limit you to public endpoints that don't require user context.",
-            "args": [{
-                    "name": "clientId",
-                    "type": "credentials",
-                    "info": "The id of your application obtained from ProductHunt.",
-                    "required": true
-                }, {
-                    "name": "clientSecret",
-                    "type": "credentials",
-                    "info": "The secret of your application obtained from ProductHunt.",
-                    "required": true
-                }],
-            "callbacks": [{
-                    "name": "error",
-                    "info": "Error"
-                }, {
-                    "name": "success",
-                    "info": "Success"
-                }]
-        }, {
-            "name": "getTechPosts",
-            "description": "This endpoint allows to get the tech posts of today.",
-            "args": [{
-                    "name": "accessToken",
-                    "type": "String",
-                    "info": "The valid accessToken.",
-                    "required": true
-                }, {
-                    "name": "daysAgo",
-                    "type": "String",
-                    "info": "Parameter for pagination.",
-                    "required": false
-                }, {
-                    "name": "day",
-                    "type": "DatePicker",
-                    "info": "Alternate parameter for requesting specific days (Format: day=YYYY-MM-DD).",
-                    "required": false
-                }],
-            "callbacks": [{
-                    "name": "error",
-                    "info": "Error"
-                }, {
-                    "name": "success",
-                    "info": "Success"
-                }]
-        }, {
-            "name": "getPostByCategory",
-            "description": "This endpoint allows to get the posts of today for given category.",
-            "args": [{
-                    "name": "accessToken",
-                    "type": "String",
-                    "info": "The valid accessToken.",
-                    "required": true
-                }, {
-                    "name": "categoryName",
-                    "type": "String",
-                    "info": "The name of the category.",
-                    "required": true
-                }, {
-                    "name": "daysAgo",
-                    "type": "String",
-                    "info": "Parameter for pagination.",
-                    "required": false
-                }, {
-                    "name": "day",
-                    "type": "DatePicker",
-                    "info": "Alternate parameter for requesting specific days (Format: day=YYYY-MM-DD).",
-                    "required": false
-                }],
-            "callbacks": [{
-                    "name": "error",
-                    "info": "Error"
-                }, {
-                    "name": "success",
-                    "info": "Success"
-                }]
-        }, {
-            "name": "getAllPosts",
-            "description": "This endpoint allows to get all the newest posts.",
-            "args": [{
-                    "name": "accessToken",
-                    "type": "String",
-                    "info": "The valid accessToken.",
-                    "required": true
-                }, {
-                    "name": "searchUrl",
-                    "type": "String",
-                    "info": "Filter parameter: can filter posts by url.",
-                    "required": false
-                }, {
-                    "name": "searchCategory",
-                    "type": "String",
-                    "info": "Filter parameter: can filter posts by category. Default = unspecified (All categories). ",
-                    "required": false
-                }, {
-                    "name": "searchTopic",
-                    "type": "String",
-                    "info": "Filter parameter: can filter posts by topic id or slug. Default = unspecified (All topics).",
-                    "required": false
-                }, {
-                    "name": "older",
-                    "type": "String",
-                    "info": "Filter parameter: get only records older than the provided id.",
-                    "required": false
-                }, {
-                    "name": "newer",
-                    "type": "String",
-                    "info": "Filter parameter: get only records newer than the provided id.",
-                    "required": false
-                }, {
-                    "name": "perPage",
-                    "type": "String",
-                    "info": "Filter parameter: define the amount of records sent per call (max 50).",
-                    "required": false
-                }],
-            "callbacks": [{
-                    "name": "error",
-                    "info": "Error"
-                }, {
-                    "name": "success",
-                    "info": "Success"
-                }]
-        }, {
-            "name": "getPostsCreatedByUser",
-            "description": "This endpoint allows to get all posts created by a user.",
-            "args": [{
-                    "name": "accessToken",
-                    "type": "String",
-                    "info": "The valid accessToken.",
-                    "required": true
-                }, {
-                    "name": "userId",
-                    "type": "String",
-                    "info": "The valid user ID.",
-                    "required": true
-                }, {
-                    "name": "older",
-                    "type": "String",
-                    "info": "Filter parameter: get only records older than the provided id.",
-                    "required": false
-                }, {
-                    "name": "newer",
-                    "type": "String",
-                    "info": "Filter parameter: get only records newer than the provided id.",
-                    "required": false
-                }, {
-                    "name": "perPage",
-                    "type": "String",
-                    "info": "Filter parameter: define the amount of records sent per call (max 50).",
-                    "required": false
-                }],
-            "callbacks": [{
-                    "name": "error",
-                    "info": "Error"
-                }, {
-                    "name": "success",
-                    "info": "Success"
-                }]
-        }, {
-            "name": "getPostsMadeByUser",
-            "description": "This endpoint allows to get all posts made by a user.",
-            "args": [{
-                    "name": "accessToken",
-                    "type": "String",
-                    "info": "The valid accessToken.",
-                    "required": true
-                }, {
-                    "name": "userId",
-                    "type": "String",
-                    "info": "The valid user ID.",
-                    "required": true
-                }, {
-                    "name": "older",
-                    "type": "String",
-                    "info": "Filter parameter: get only records older than the provided id.",
-                    "required": false
-                }, {
-                    "name": "newer",
-                    "type": "String",
-                    "info": "Filter parameter: get only records newer than the provided id.",
-                    "required": false
-                }, {
-                    "name": "perPage",
-                    "type": "String",
-                    "info": "Filter parameter: define the amount of records sent per call (max 50).",
-                    "required": false
-                }],
-            "callbacks": [{
-                    "name": "error",
-                    "info": "Error"
-                }, {
-                    "name": "success",
-                    "info": "Success"
-                }]
-        }, {
-            "name": "getPost",
-            "description": "This endpoint allows to get details of a post.",
-            "args": [{
-                    "name": "accessToken",
-                    "type": "String",
-                    "info": "The valid accessToken.",
-                    "required": true
-                }, {
-                    "name": "postId",
-                    "type": "String",
-                    "info": "The valid post ID.",
-                    "required": true
-                }],
-            "callbacks": [{
-                    "name": "error",
-                    "info": "Error"
-                }, {
-                    "name": "success",
-                    "info": "Success"
-                }]
-        }, {
-            "name": "getUsers",
-            "description": "This endpoint allows to get all users.",
-            "args": [{
-                    "name": "accessToken",
-                    "type": "String",
-                    "info": "The valid accessToken.",
-                    "required": true
-                }, {
-                    "name": "older",
-                    "type": "String",
-                    "info": "Filter parameter: get only records older than the provided id.",
-                    "required": false
-                }, {
-                    "name": "newer",
-                    "type": "String",
-                    "info": "Filter parameter: get only records newer than the provided id.",
-                    "required": false
-                }, {
-                    "name": "perPage",
-                    "type": "String",
-                    "info": "Filter parameter: define the amount of records sent per call (max 50).",
-                    "required": false
-                }, {
-                    "name": "order",
-                    "type": "Select",
-                    "options": ["asc","desc"],
-                    "info": "Filter parameter: define the order you want to receive the records (does not affect older\/newer behaviour). Valid values are asc or desc.",
-                    "required": false
-                }],
-            "callbacks": [{
-                    "name": "error",
-                    "info": "Error"
-                }, {
-                    "name": "success",
-                    "info": "Success"
-                }]
-        }, {
-            "name": "getSingleUser",
-            "description": "This endpoint allows to get details of a user.",
-            "args": [{
-                    "name": "accessToken",
-                    "type": "String",
-                    "info": "The valid accessToken.",
-                    "required": true
-                }, {
-                    "name": "userId",
-                    "type": "String",
-                    "info": "The ID or username of the User you want to fetch.",
-                    "required": true
-                }, {
-                    "name": "exclude",
-                    "type": "String",
-                    "info": "Option to exclude certain values from the request. Options - \"relationships\".",
-                    "required": false
-                }],
-            "callbacks": [{
-                    "name": "error",
-                    "info": "Error"
-                }, {
-                    "name": "success",
-                    "info": "Success"
-                }]
-        }, {
-            "name": "getCollections",
-            "description": "This endpoint allows to get newest collections.",
-            "args": [{
-                    "name": "accessToken",
-                    "type": "String",
-                    "info": "The valid accessToken.",
-                    "required": true
-                }, {
-                    "name": "older",
-                    "type": "String",
-                    "info": "Filter parameter: get only records older than the provided id.",
-                    "required": false
-                }, {
-                    "name": "newer",
-                    "type": "String",
-                    "info": "Filter parameter: get only records newer than the provided id.",
-                    "required": false
-                }, {
-                    "name": "perPage",
-                    "type": "String",
-                    "info": "Filter parameter: define the amount of records sent per call (max 50).",
-                    "required": false
-                }, {
-                    "name": "order",
-                    "type": "Select",
-                    "options": ["asc","desc"],
-                    "info": "Filter parameter: define the order you want to receive the records (does not affect older\/newer behaviour). Valid values are asc or desc.",
-                    "required": false
-                }, {
-                    "name": "sortBy",
-                    "type": "Select",
-                    "options": ["created_at","updated_at","featured_at"],
-                    "info": "Filter parameter: valid values are created_at, updated_at or featured_at.",
-                    "required": false
-                }, {
-                    "name": "searchFeatured",
-                    "type": "String",
-                    "info": "Only return collections that have been featured on Product Hunt. true or false. Default = false.",
-                    "required": false
-                }, {
-                    "name": "searchCategory",
-                    "type": "String",
-                    "info": "Only return collections from certain category. Default = unspecified (All categories).",
-                    "required": false
-                }, {
-                    "name": "searchSlug",
-                    "type": "String",
-                    "info": "Filter by the url slug of the collection.",
-                    "required": false
-                }, {
-                    "name": "searchUsername",
-                    "type": "String",
-                    "info": "Filter by the username of the creator of the collection.",
-                    "required": false
-                }],
-            "callbacks": [{
-                    "name": "error",
-                    "info": "Error"
-                }, {
-                    "name": "success",
-                    "info": "Success"
-                }]
-        }, {
-            "name": "getUserCollections",
-            "description": "This endpoint allows to get all collections created by a user.",
-            "args": [{
-                    "name": "accessToken",
-                    "type": "String",
-                    "info": "The valid accessToken.",
-                    "required": true
-                }, {
-                    "name": "userId",
-                    "type": "String",
-                    "info": "The valid user ID.",
-                    "required": true
-                }, {
-                    "name": "page",
-                    "type": "String",
-                    "info": "Parameter for pagination.",
-                    "required": false
-                }, {
-                    "name": "perPage",
-                    "type": "String",
-                    "info": "Filter parameter: define the amount of records sent per call (max 50).",
-                    "required": false
-                }, {
-                    "name": "order",
-                    "type": "Select",
-                    "options": ["asc","desc"],
-                    "info": "Filter parameter: define the order you want to receive the records (does not affect older\/newer behaviour). Valid values are asc or desc.",
-                    "required": false
-                }, {
-                    "name": "sortBy",
-                    "type": "Select",
-                    "options": ["created_at","updated_at","featured_at"],
-                    "info": "Filter parameter: valid values are created_at, updated_at or featured_at.",
-                    "required": false
-                }, {
-                    "name": "searchFeatured",
-                    "type": "String",
-                    "info": "Only return collections that have been featured on Product Hunt. true or false. Default = false.",
-                    "required": false
-                }],
-            "callbacks": [{
-                    "name": "error",
-                    "info": "Error"
-                }, {
-                    "name": "success",
-                    "info": "Success"
-                }]
-        }, {
-            "name": "getCollectionsWithPost",
-            "description": "This endpoint allows to get all collections that include a certain post.",
-            "args": [{
-                    "name": "accessToken",
-                    "type": "String",
-                    "info": "The valid accessToken.",
-                    "required": true
-                }, {
-                    "name": "postId",
-                    "type": "String",
-                    "info": "The valid post ID.",
-                    "required": true
-                }, {
-                    "name": "page",
-                    "type": "String",
-                    "info": "Parameter for pagination.",
-                    "required": false
-                }, {
-                    "name": "perPage",
-                    "type": "String",
-                    "info": "Filter parameter: define the amount of records sent per call (max 50).",
-                    "required": false
-                }, {
-                    "name": "order",
-                    "type": "Select",
-                    "options": ["asc","desc"],
-                    "info": "Filter parameter: define the order you want to receive the records (does not affect older\/newer behaviour). Valid values are asc or desc.",
-                    "required": false
-                }, {
-                    "name": "sortBy",
-                    "type": "Select",
-                    "options": ["created_at","updated_at","featured_at"],
-                    "info": "Filter parameter: valid values are created_at, updated_at or featured_at.",
-                    "required": false
-                }, {
-                    "name": "searchFeatured",
-                    "type": "String",
-                    "info": "Only return collections that have been featured on Product Hunt. true or false. Default = false.",
-                    "required": false
-                }],
-            "callbacks": [{
-                    "name": "error",
-                    "info": "Error"
-                }, {
-                    "name": "success",
-                    "info": "Success"
-                }]
-        }, {
-            "name": "getSingleCollection",
-            "description": "This endpoint allows to get details of a collection.",
-            "args": [{
-                    "name": "accessToken",
-                    "type": "String",
-                    "info": "The valid accessToken.",
-                    "required": true
-                }, {
-                    "name": "collectionId",
-                    "type": "String",
-                    "info": "The numeric ID of the Collection you want to fetch.",
-                    "required": true
-                }],
-            "callbacks": [{
-                    "name": "error",
-                    "info": "Error"
-                }, {
-                    "name": "success",
-                    "info": "Success"
-                }]
-        }, {
-            "name": "getNotifications",
-            "description": "This endpoint allows to receive your latest Post related notifications.",
-            "args": [{
-                    "name": "accessToken",
-                    "type": "String",
-                    "info": "The valid accessToken.",
-                    "required": true
-                }, {
-                    "name": "perPage",
-                    "type": "String",
-                    "info": "Filter parameter: define the amount of records sent per call (max 50).",
-                    "required": false
-                }, {
-                    "name": "searchType",
-                    "type": "String",
-                    "info": "Type of reference object accepted, defaults to 'Post', use 'all' for every notification type.",
-                    "required": false
-                }],
-            "callbacks": [{
-                    "name": "error",
-                    "info": "Error"
-                }, {
-                    "name": "success",
-                    "info": "Success"
-                }]
-        }, {
-            "name": "getPostVotes",
-            "description": "This endpoint allows to see all votes for a post.",
-            "args": [{
-                    "name": "accessToken",
-                    "type": "String",
-                    "info": "The valid accessToken.",
-                    "required": true
-                }, {
-                    "name": "postId",
-                    "type": "String",
-                    "info": "The ID of the post you want to find votes for.",
-                    "required": true
-                }, {
-                    "name": "older",
-                    "type": "String",
-                    "info": "Filter parameter: get only records older than the provided id.",
-                    "required": false
-                }, {
-                    "name": "newer",
-                    "type": "String",
-                    "info": "Filter parameter: get only records newer than the provided id.",
-                    "required": false
-                }, {
-                    "name": "perPage",
-                    "type": "String",
-                    "info": "Filter parameter: define the amount of records sent per call (max 50).",
-                    "required": false
-                }, {
-                    "name": "order",
-                    "type": "Select",
-                    "options": ["asc","desc"],
-                    "info": "Filter parameter: define the order you want to receive the records (does not affect older\/newer behaviour). Valid values are asc or desc.",
-                    "required": false
-                }],
-            "callbacks": [{
-                    "name": "error",
-                    "info": "Error"
-                }, {
-                    "name": "success",
-                    "info": "Success"
-                }]
-        }, {
-            "name": "getUserVotes",
-            "description": "This endpoint allows to see all votes for a user.",
-            "args": [{
-                    "name": "accessToken",
-                    "type": "String",
-                    "info": "The valid accessToken.",
-                    "required": true
-                }, {
-                    "name": "userId",
-                    "type": "String",
-                    "info": "The ID of the user you want to find votes for.",
-                    "required": true
-                }, {
-                    "name": "older",
-                    "type": "String",
-                    "info": "Filter parameter: get only records older than the provided id.",
-                    "required": false
-                }, {
-                    "name": "newer",
-                    "type": "String",
-                    "info": "Filter parameter: get only records newer than the provided id.",
-                    "required": false
-                }, {
-                    "name": "perPage",
-                    "type": "String",
-                    "info": "Filter parameter: define the amount of records sent per call (max 50).",
-                    "required": false
-                }, {
-                    "name": "order",
-                    "type": "Select",
-                    "options": ["asc","desc"],
-                    "info": "Filter parameter: define the order you want to receive the records (does not affect older\/newer behaviour). Valid values are asc or desc.",
-                    "required": false
-                }],
-            "callbacks": [{
-                    "name": "error",
-                    "info": "Error"
-                }, {
-                    "name": "success",
-                    "info": "Success"
-                }]
-        }, {
-            "name": "getMySettings",
-            "description": "This endpoint allows to get your own details.",
-            "args": [{
-                    "name": "accessToken",
-                    "type": "String",
-                    "info": "The valid accessToken.",
-                    "required": true
-                }, {
-                    "name": "exclude",
-                    "type": "String",
-                    "info": "Option to exclude certain values from the request. Options - \"relationships\".",
-                    "required": false
-                }],
-            "callbacks": [{
-                    "name": "error",
-                    "info": "Error"
-                }, {
-                    "name": "success",
-                    "info": "Success"
-                }]
-        }, {
-            "name": "getFollowers",
-            "description": "This endpoint allows to get list all followers.",
-            "args": [{
-                    "name": "accessToken",
-                    "type": "String",
-                    "info": "The valid accessToken.",
-                    "required": true
-                }, {
-                    "name": "userId",
-                    "type": "String",
-                    "info": "The ID of the user you want to fetch all followers from.",
-                    "required": true
-                }, {
-                    "name": "older",
-                    "type": "String",
-                    "info": "Filter parameter: get only records older than the provided id.",
-                    "required": false
-                }, {
-                    "name": "newer",
-                    "type": "String",
-                    "info": "Filter parameter: get only records newer than the provided id.",
-                    "required": false
-                }, {
-                    "name": "perPage",
-                    "type": "String",
-                    "info": "Filter parameter: define the amount of records sent per call (max 50).",
-                    "required": false
-                }, {
-                    "name": "order",
-                    "type": "Select",
-                    "options": ["asc","desc"],
-                    "info": "Filter parameter: define the order you want to receive the records (does not affect older\/newer behaviour). Valid values are asc or desc.",
-                    "required": false
-                }],
-            "callbacks": [{
-                    "name": "error",
-                    "info": "Error"
-                }, {
-                    "name": "success",
-                    "info": "Success"
-                }]
-        }, {
-            "name": "getInteractions",
-            "description": "This endpoint allows to get user's interactions.",
-            "args": [{
-                    "name": "accessToken",
-                    "type": "String",
-                    "info": "The valid accessToken.",
-                    "required": true
-                }, {
-                    "name": "include",
-                    "type": "Select",
-                    "options": ["following_user_ids","voted_post_ids","voted_comment_ids","collected_post_ids","subscribed_collection_ids","subscribed_live_event_ids","followed_topics_ids"],
-                    "info": "Interactions to be included. Possible values: following_user_ids, voted_post_ids, voted_comment_ids, collected_post_ids, subscribed_collection_ids, subscribed_live_event_ids, followed_topics_ids.",
-                    "required": false
-                }],
-            "callbacks": [{
-                    "name": "error",
-                    "info": "Error"
-                }, {
-                    "name": "success",
-                    "info": "Success"
-                }]
-        }, {
-            "name": "getCategories",
-            "description": "This endpoint allows to get user's interactions.",
-            "args": [{
-                    "name": "accessToken",
-                    "type": "String",
-                    "info": "The valid accessToken.",
-                    "required": true
-                }],
-            "callbacks": [{
-                    "name": "error",
-                    "info": "Error"
-                }, {
-                    "name": "success",
-                    "info": "Success"
-                }]
-        }, {
-            "name": "getLiveEvents",
-            "description": "This endpoint allows to get list of live events.",
-            "args": [{
-                    "name": "accessToken",
-                    "type": "String",
-                    "info": "The valid accessToken.",
-                    "required": true
-                }, {
-                    "name": "offset",
-                    "type": "String",
-                    "info": "Filter parameter: define the amount of records to be skipped.",
-                    "required": false
-                }, {
-                    "name": "perPage",
-                    "type": "String",
-                    "info": "Filter parameter: define the amount of records sent per call (default 20, max 50).",
-                    "required": false
-                }, {
-                    "name": "older",
-                    "type": "DatePicker",
-                    "info": "Filter parameter: get only records with older \"start_at\" date than the provided date (format \"YYYY-MM-DD\").",
-                    "required": false
-                }, {
-                    "name": "newer",
-                    "type": "DatePicker",
-                    "info": "Filter parameter: get only records with newer \"start_at\" date (includes events with unspeficifed date) than the provided date (format \"YYYY-MM-DD\").",
-                    "required": false
-                }, {
-                    "name": "searchCategory",
-                    "type": "String",
-                    "info": "Retrieve events for a specific category.",
-                    "required": false
-                }, {
-                    "name": "searchDate",
-                    "type": "DatePicker",
-                    "info": "Retrieve events for a specific month (format \"YYYY-MM\"), use \false\" for events without a start_at date.",
-                    "required": false
-                }, {
-                    "name": "searchLiveVideo",
-                    "type": "String",
-                    "info": "Retrieve LIVE on camera events. true or false. Default: false.",
-                    "required": false
-                }, {
-                    "name": "searchSlug",
-                    "type": "String",
-                    "info": "Filter by the url slug of the collection.",
-                    "required": false
-                }],
-            "callbacks": [{
-                    "name": "error",
-                    "info": "Error"
-                }, {
-                    "name": "success",
-                    "info": "Success"
-                }]
-        }, {
-            "name": "getSingleLiveEvent",
-            "description": "This endpoint allows to get details of a live event.",
-            "args": [{
-                    "name": "accessToken",
-                    "type": "String",
-                    "info": "The valid accessToken.",
-                    "required": true
-                }, {
-                    "name": "liveEventId",
-                    "type": "String",
-                    "info": "The numeric ID of the live event you want to fetch.",
-                    "required": true
-                }],
-            "callbacks": [{
-                    "name": "error",
-                    "info": "Error"
-                }, {
-                    "name": "success",
-                    "info": "Success"
-                }]
-        }, {
-            "name": "generateShareableImage",
-            "description": "This endpoint allows to generate a shareable image for a comment.",
-            "args": [{
-                    "name": "accessToken",
-                    "type": "String",
-                    "info": "The valid accessToken.",
-                    "required": true
-                }, {
-                    "name": "commentId",
-                    "type": "String",
-                    "info": "The ID of the comment you want an image for.",
-                    "required": true
-                }],
-            "callbacks": [{
-                    "name": "error",
-                    "info": "Error"
-                }, {
-                    "name": "success",
-                    "info": "Success"
-                }]
-        }, {
-            "name": "getTopics",
-            "description": "This endpoint allows to get list of topics.",
-            "args": [{
-                    "name": "accessToken",
-                    "type": "String",
-                    "info": "The valid accessToken.",
-                    "required": true
-                }, {
-                    "name": "older",
-                    "type": "DatePicker",
-                    "info": "Filter parameter: get only records older than the provided id (format \"YYYY-MM-DD\").",
-                    "required": false
-                }, {
-                    "name": "newer",
-                    "type": "DatePicker",
-                    "info": "Filter parameter: get only records newer than the provided id (format \"YYYY-MM-DD\").",
-                    "required": false
-                }, {
-                    "name": "perPage",
-                    "type": "String",
-                    "info": "Filter parameter: define the amount of records sent per call (max 50).",
-                    "required": false
-                }, {
-                    "name": "sortBy",
-                    "type": "Select",
-                    "options": ["created_at","updated_at","featured_at"],
-                    "info": "Sort api response: valid parameters to sort by: created_at, id, updated_at.",
-                    "required": false
-                }, {
-                    "name": "order",
-                    "type": "Select",
-                    "options": ["desc","asc"],
-                    "info": "Sort api response: valid parameters are desc and asc.",
-                    "required": false
-                }, {
-                    "name": "searchTrending",
-                    "type": "String",
-                    "info": "Filter parameter: can filter only trending topics.",
-                    "required": false
-                }, {
-                    "name": "searchFollowerId",
-                    "type": "String",
-                    "info": "Filter parameter: can filter topics by follower user id.",
-                    "required": false
-                }, {
-                    "name": "searchSlug",
-                    "type": "String",
-                    "info": "Filter parameter: filter by the slug of the url.",
-                    "required": false
-                }],
-            "callbacks": [{
-                    "name": "error",
-                    "info": "Error"
-                }, {
-                    "name": "success",
-                    "info": "Success"
-                }]
-        }, {
-            "name": "getSingleTopic",
-            "description": "This endpoint allows to get details of a topic.",
-            "args": [{
-                    "name": "accessToken",
-                    "type": "String",
-                    "info": "The valid accessToken.",
-                    "required": true
-                }, {
-                    "name": "topicId",
-                    "type": "String",
-                    "info": "The numeric ID of the Topic you want to fetch.",
-                    "required": true
-                }],
-            "callbacks": [{
-                    "name": "error",
-                    "info": "Error"
-                }, {
-                    "name": "success",
-                    "info": "Success"
-                }]
-        }, {
-            "name": "subscribeToPushNotifications",
-            "description": "This endpoint allows to subscribe a logged-in user to desktop push notifications.",
-            "args": [{
-                    "name": "accessToken",
-                    "type": "String",
-                    "info": "The valid accessToken.",
-                    "required": true
-                }, {
-                    "name": "desktopPushToken",
-                    "type": "String",
-                    "info": "PushService Vendor Token for Desktop App Push Notifications (define one of those 3 tokens).",
-                    "required": false
-                }, {
-                    "name": "mobilePushToken",
-                    "type": "String",
-                    "info": "PushService Vendor Token for Mobile App Push Notifications (define one of those 3 tokens).",
-                    "required": false
-                }, {
-                    "name": "browserPushToken",
-                    "type": "String",
-                    "info": "PushService Vendor Token for Browser Push Notification (define one of those 3 tokens).",
-                    "required": false
-                }],
-            "callbacks": [{
-                    "name": "error",
-                    "info": "Error"
-                }, {
-                    "name": "success",
-                    "info": "Success"
-                }]
-        }, {
-            "name": "getComments",
-            "description": "This endpoint allows to fetch a stream of all recent comments.",
-            "args": [{
-                    "name": "accessToken",
-                    "type": "String",
-                    "info": "The valid accessToken.",
-                    "required": true
-                }, {
-                    "name": "older",
-                    "type": "String",
-                    "info": "Filter parameter: get only records older than the provided id.",
-                    "required": false
-                }, {
-                    "name": "newer",
-                    "type": "String",
-                    "info": "Filter parameter: get only records newer than the provided id.",
-                    "required": false
-                }, {
-                    "name": "perPage",
-                    "type": "String",
-                    "info": "Filter parameter: define the amount of records sent per call (max 50).",
-                    "required": false
-                }, {
-                    "name": "order",
-                    "type": "Select",
-                    "options": ["desc","asc"],
-                    "info": "Filter parameter: define the order you want to receive the records (does not affect older\/newer behaviour). Valid values are asc or desc..",
-                    "required": false
-                }, {
-                    "name": "searchUserId",
-                    "type": "String",
-                    "info": "The id of a user you want to filter for. If you pass this id the user won't be nested.",
-                    "required": false
-                }, {
-                    "name": "searchPostId",
-                    "type": "String",
-                    "info": "The id of a post you want to filter for. If you pass this id the post won't be nested.",
-                    "required": false
-                }, {
-                    "name": "searchAmaEventId",
-                    "type": "String",
-                    "info": "The id of a post you want to filter for. If you pass this id the ama_event won't be nested.",
-                    "required": false
-                }],
-            "callbacks": [{
-                    "name": "error",
-                    "info": "Error"
-                }, {
-                    "name": "success",
-                    "info": "Success"
-                }]
-        }, {
-            "name": "getUserComments",
-            "description": "This endpoint allows to fetch comments of a user (not nested).",
-            "args": [{
-                    "name": "accessToken",
-                    "type": "String",
-                    "info": "The valid accessToken.",
-                    "required": true
-                }, {
-                    "name": "userId",
-                    "type": "String",
-                    "info": "The ID of the user you want to fetch comments.",
-                    "required": true
-                }],
-            "callbacks": [{
-                    "name": "error",
-                    "info": "Error"
-                }, {
-                    "name": "success",
-                    "info": "Success"
-                }]
-        }, {
-            "name": "getPostThreads",
-            "description": "This endpoint allows to fetch all threads of a post (nested and sorted).",
-            "args": [{
-                    "name": "accessToken",
-                    "type": "String",
-                    "info": "The valid accessToken.",
-                    "required": true
-                }, {
-                    "name": "postId",
-                    "type": "String",
-                    "info": "The id the post the comment belongs to (passed via URL).",
-                    "required": true
-                }, {
-                    "name": "older",
-                    "type": "String",
-                    "info": "Filter parameter: get only records older than the provided id.",
-                    "required": false
-                }, {
-                    "name": "newer",
-                    "type": "String",
-                    "info": "Filter parameter: get only records newer than the provided id.",
-                    "required": false
-                }, {
-                    "name": "perPage",
-                    "type": "String",
-                    "info": "Filter parameter: define the amount of records sent per call (max 50).",
-                    "required": false
-                }, {
-                    "name": "order",
-                    "type": "Select",
-                    "options": ["asc","desc"],
-                    "info": "Filter parameter: define the order you want to receive the records (does not affect older\/newer behaviour). Valid values are asc or desc.",
-                    "required": false
-                }],
-            "callbacks": [{
-                    "name": "error",
-                    "info": "Error"
-                }, {
-                    "name": "success",
-                    "info": "Success"
-                }]
-        }, {
-            "name": "getLiveEventThreads",
-            "description": "This endpoint allows to fetch all threads of a live event (nested and sorted).",
-            "args": [{
-                    "name": "accessToken",
-                    "type": "String",
-                    "info": "The valid accessToken.",
-                    "required": true
-                }, {
-                    "name": "liveEventId",
-                    "type": "String",
-                    "info": "The id the live event the comment belongs to (passed via URL).",
-                    "required": true
-                }, {
-                    "name": "older",
-                    "type": "String",
-                    "info": "Filter parameter: get only records older than the provided id.",
-                    "required": false
-                }, {
-                    "name": "newer",
-                    "type": "String",
-                    "info": "Filter parameter: get only records newer than the provided id.",
-                    "required": false
-                }, {
-                    "name": "perPage",
-                    "type": "String",
-                    "info": "Filter parameter: define the amount of records sent per call (max 50).",
-                    "required": false
-                }, {
-                    "name": "order",
-                    "type": "Select",
-                    "options": ["desc","asc"],
-                    "info": "Filter parameter: define the order you want to receive the records (does not affect older\/newer behaviour). Valid values are asc or desc.",
-                    "required": false
-                }],
-            "callbacks": [{
-                    "name": "error",
-                    "info": "Error"
-                }, {
-                    "name": "success",
-                    "info": "Success"
-                }]
-        }, {
-            "name": "getCommentVotes",
-            "description": "This endpoint allows to see all votes for a comment.",
-            "args": [{
-                    "name": "accessToken",
-                    "type": "String",
-                    "info": "The valid accessToken.",
-                    "required": true
-                }, {
-                    "name": "commentId",
-                    "type": "String",
-                    "info": "The ID of the comment you want to find votes for.",
-                    "required": true
-                }, {
-                    "name": "older",
-                    "type": "String",
-                    "info": "Filter parameter: get only records older than the provided id.",
-                    "required": false
-                }, {
-                    "name": "newer",
-                    "type": "String",
-                    "info": "Filter parameter: get only records newer than the provided id.",
-                    "required": false
-                }, {
-                    "name": "perPage",
-                    "type": "String",
-                    "info": "Filter parameter: define the amount of records sent per call (max 50).",
-                    "required": false
-                }, {
-                    "name": "order",
-                    "type": "Select",
-                    "options": ["desc","asc"],
-                    "info": "Filter parameter: define the order you want to receive the records (does not affect older\/newer behaviour). Valid values are asc or desc.",
-                    "required": false
-                }],
-            "callbacks": [{
-                    "name": "error",
-                    "info": "Error"
-                }, {
-                    "name": "success",
-                    "info": "Success"
-                }]
-        }]
+    "blocks":[
+        {
+            "name":"getUserAccessToken",
+            "description":"This endpoint allows to get a token on behalf of a user.",
+            "args":[
+                {
+                    "name":"clientId",
+                    "type":"credentials",
+                    "info":"The id of your application obtained from ProductHunt.",
+                    "required":true
+                },
+                {
+                    "name":"clientSecret",
+                    "type":"credentials",
+                    "info":"The secret of your application obtained from ProductHunt.",
+                    "required":true
+                },
+                {
+                    "name":"redirectUri",
+                    "type":"String",
+                    "info":"Your redirect uri.",
+                    "required":true
+                },
+                {
+                    "name":"code",
+                    "type":"String",
+                    "info":"The access grant code you received via the callback from ProductHunt.",
+                    "required":true
+                }
+            ],
+            "callbacks":[
+                {
+                    "name":"error",
+                    "info":"Error"
+                },
+                {
+                    "name":"success",
+                    "info":"Success"
+                }
+            ]
+        },
+        {
+            "name":"getClientAccessToken",
+            "description":"This endpoint allows to get a token without user context. (eg before a user logs in). Please remember that this tokens limit you to public endpoints that don't require user context.",
+            "args":[
+                {
+                    "name":"clientId",
+                    "type":"credentials",
+                    "info":"The id of your application obtained from ProductHunt.",
+                    "required":true
+                },
+                {
+                    "name":"clientSecret",
+                    "type":"credentials",
+                    "info":"The secret of your application obtained from ProductHunt.",
+                    "required":true
+                }
+            ],
+            "callbacks":[
+                {
+                    "name":"error",
+                    "info":"Error"
+                },
+                {
+                    "name":"success",
+                    "info":"Success"
+                }
+            ]
+        },
+        {
+            "name":"getTechPosts",
+            "description":"This endpoint allows to get the tech posts of today.",
+            "args":[
+                {
+                    "name":"accessToken",
+                    "type":"String",
+                    "info":"The valid accessToken.",
+                    "required":true
+                },
+                {
+                    "name":"day",
+                    "type":"DatePicker",
+                    "info":"Alternate parameter for requesting specific days (Format: day=YYYY-MM-DD).",
+                    "required":false
+                },
+                {
+                    "name":"daysAgo",
+                    "type":"String",
+                    "info":"Parameter for pagination.",
+                    "required":false
+                }
+            ],
+            "callbacks":[
+                {
+                    "name":"error",
+                    "info":"Error"
+                },
+                {
+                    "name":"success",
+                    "info":"Success"
+                }
+            ]
+        },
+        {
+            "name":"getPostByCategory",
+            "description":"This endpoint allows to get the posts of today for given category.",
+            "args":[
+                {
+                    "name":"accessToken",
+                    "type":"String",
+                    "info":"The valid accessToken.",
+                    "required":true
+                },
+                {
+                    "name":"categoryName",
+                    "type":"String",
+                    "info":"The name of the category.",
+                    "required":true
+                },
+                {
+                    "name":"daysAgo",
+                    "type":"String",
+                    "info":"Parameter for pagination.",
+                    "required":false
+                },
+                {
+                    "name":"day",
+                    "type":"DatePicker",
+                    "info":"Alternate parameter for requesting specific days (Format: day=YYYY-MM-DD).",
+                    "required":false
+                }
+            ],
+            "callbacks":[
+                {
+                    "name":"error",
+                    "info":"Error"
+                },
+                {
+                    "name":"success",
+                    "info":"Success"
+                }
+            ]
+        },
+        {
+            "name":"getAllPosts",
+            "description":"This endpoint allows to get all the newest posts.",
+            "args":[
+                {
+                    "name":"accessToken",
+                    "type":"String",
+                    "info":"The valid accessToken.",
+                    "required":true
+                },
+                {
+                    "name":"searchUrl",
+                    "type":"String",
+                    "info":"Filter parameter: can filter posts by url.",
+                    "required":false
+                },
+                {
+                    "name":"searchCategory",
+                    "type":"String",
+                    "info":"Filter parameter: can filter posts by category. Default = unspecified (All categories). ",
+                    "required":false
+                },
+                {
+                    "name":"searchTopic",
+                    "type":"String",
+                    "info":"Filter parameter: can filter posts by topic id or slug. Default = unspecified (All topics).",
+                    "required":false
+                },
+                {
+                    "name":"older",
+                    "type":"String",
+                    "info":"Filter parameter: get only records older than the provided id.",
+                    "required":false
+                },
+                {
+                    "name":"newer",
+                    "type":"String",
+                    "info":"Filter parameter: get only records newer than the provided id.",
+                    "required":false
+                },
+                {
+                    "name":"perPage",
+                    "type":"Number",
+                    "info":"Filter parameter: define the amount of records sent per call (max 50).",
+                    "required":false
+                }
+            ],
+            "callbacks":[
+                {
+                    "name":"error",
+                    "info":"Error"
+                },
+                {
+                    "name":"success",
+                    "info":"Success"
+                }
+            ]
+        },
+        {
+            "name":"getPostsCreatedByUser",
+            "description":"This endpoint allows to get all posts created by a user.",
+            "args":[
+                {
+                    "name":"accessToken",
+                    "type":"String",
+                    "info":"The valid accessToken.",
+                    "required":true
+                },
+                {
+                    "name":"userId",
+                    "type":"String",
+                    "info":"The valid user ID.",
+                    "required":true
+                },
+                {
+                    "name":"older",
+                    "type":"String",
+                    "info":"Filter parameter: get only records older than the provided id.",
+                    "required":false
+                },
+                {
+                    "name":"newer",
+                    "type":"String",
+                    "info":"Filter parameter: get only records newer than the provided id.",
+                    "required":false
+                },
+                {
+                    "name":"perPage",
+                    "type":"Number",
+                    "info":"Filter parameter: define the amount of records sent per call (max 50).",
+                    "required":false
+                }
+            ],
+            "callbacks":[
+                {
+                    "name":"error",
+                    "info":"Error"
+                },
+                {
+                    "name":"success",
+                    "info":"Success"
+                }
+            ]
+        },
+        {
+            "name":"getPostsMadeByUser",
+            "description":"This endpoint allows to get all posts made by a user.",
+            "args":[
+                {
+                    "name":"accessToken",
+                    "type":"String",
+                    "info":"The valid accessToken.",
+                    "required":true
+                },
+                {
+                    "name":"userId",
+                    "type":"String",
+                    "info":"The valid user ID.",
+                    "required":true
+                },
+                {
+                    "name":"older",
+                    "type":"String",
+                    "info":"Filter parameter: get only records older than the provided id.",
+                    "required":false
+                },
+                {
+                    "name":"newer",
+                    "type":"String",
+                    "info":"Filter parameter: get only records newer than the provided id.",
+                    "required":false
+                },
+                {
+                    "name":"perPage",
+                    "type":"Number",
+                    "info":"Filter parameter: define the amount of records sent per call (max 50).",
+                    "required":false
+                }
+            ],
+            "callbacks":[
+                {
+                    "name":"error",
+                    "info":"Error"
+                },
+                {
+                    "name":"success",
+                    "info":"Success"
+                }
+            ]
+        },
+        {
+            "name":"getPost",
+            "description":"This endpoint allows to get details of a post.",
+            "args":[
+                {
+                    "name":"accessToken",
+                    "type":"String",
+                    "info":"The valid accessToken.",
+                    "required":true
+                },
+                {
+                    "name":"postId",
+                    "type":"String",
+                    "info":"The valid post ID.",
+                    "required":true
+                }
+            ],
+            "callbacks":[
+                {
+                    "name":"error",
+                    "info":"Error"
+                },
+                {
+                    "name":"success",
+                    "info":"Success"
+                }
+            ]
+        },
+        {
+            "name":"getUsers",
+            "description":"This endpoint allows to get all users.",
+            "args":[
+                {
+                    "name":"accessToken",
+                    "type":"String",
+                    "info":"The valid accessToken.",
+                    "required":true
+                },
+                {
+                    "name":"older",
+                    "type":"String",
+                    "info":"Filter parameter: get only records older than the provided id.",
+                    "required":false
+                },
+                {
+                    "name":"newer",
+                    "type":"String",
+                    "info":"Filter parameter: get only records newer than the provided id.",
+                    "required":false
+                },
+                {
+                    "name":"perPage",
+                    "type":"Number",
+                    "info":"Filter parameter: define the amount of records sent per call (max 50).",
+                    "required":false
+                },
+                {
+                    "name":"order",
+                    "type":"Select",
+                    "options":[
+                        "asc",
+                        "desc"
+                    ],
+                    "info":"Filter parameter: define the order you want to receive the records (does not affect older\/newer behaviour). Valid values are asc or desc.",
+                    "required":false
+                }
+            ],
+            "callbacks":[
+                {
+                    "name":"error",
+                    "info":"Error"
+                },
+                {
+                    "name":"success",
+                    "info":"Success"
+                }
+            ]
+        },
+        {
+            "name":"getSingleUser",
+            "description":"This endpoint allows to get details of a user.",
+            "args":[
+                {
+                    "name":"accessToken",
+                    "type":"String",
+                    "info":"The valid accessToken.",
+                    "required":true
+                },
+                {
+                    "name":"userId",
+                    "type":"String",
+                    "info":"The ID or username of the User you want to fetch.",
+                    "required":true
+                },
+                {
+                    "name":"exclude",
+                    "type":"String",
+                    "info":"Option to exclude certain values from the request. Options - \"relationships\".",
+                    "required":false
+                }
+            ],
+            "callbacks":[
+                {
+                    "name":"error",
+                    "info":"Error"
+                },
+                {
+                    "name":"success",
+                    "info":"Success"
+                }
+            ]
+        },
+        {
+            "name":"getCollections",
+            "description":"This endpoint allows to get newest collections.",
+            "args":[
+                {
+                    "name":"accessToken",
+                    "type":"String",
+                    "info":"The valid accessToken.",
+                    "required":true
+                },
+                {
+                    "name":"older",
+                    "type":"String",
+                    "info":"Filter parameter: get only records older than the provided id.",
+                    "required":false
+                },
+                {
+                    "name":"newer",
+                    "type":"String",
+                    "info":"Filter parameter: get only records newer than the provided id.",
+                    "required":false
+                },
+                {
+                    "name":"perPage",
+                    "type":"Number",
+                    "info":"Filter parameter: define the amount of records sent per call (max 50).",
+                    "required":false
+                },
+                {
+                    "name":"order",
+                    "type":"Select",
+                    "options":[
+                        "asc",
+                        "desc"
+                    ],
+                    "info":"Filter parameter: define the order you want to receive the records (does not affect older\/newer behaviour). Valid values are asc or desc.",
+                    "required":false
+                },
+                {
+                    "name":"sortBy",
+                    "type":"Select",
+                    "options":[
+                        "created_at",
+                        "updated_at",
+                        "featured_at"
+                    ],
+                    "info":"Filter parameter: valid values are created_at, updated_at or featured_at.",
+                    "required":false
+                },
+                {
+                    "name":"searchFeatured",
+                    "type":"Select",
+                    "options":[
+                        "true",
+                        "false"
+                    ],
+                    "info":"Only return collections that have been featured on Product Hunt. true or false. Default = false.",
+                    "required":false
+                },
+                {
+                    "name":"searchSlug",
+                    "type":"String",
+                    "info":"Filter by the url slug of the collection.",
+                    "required":false
+                },
+                {
+                    "name":"searchUsername",
+                    "type":"String",
+                    "info":"Filter by the username of the creator of the collection.",
+                    "required":false
+                }
+            ],
+            "callbacks":[
+                {
+                    "name":"error",
+                    "info":"Error"
+                },
+                {
+                    "name":"success",
+                    "info":"Success"
+                }
+            ]
+        },
+        {
+            "name":"getUserCollections",
+            "description":"This endpoint allows to get all collections created by a user.",
+            "args":[
+                {
+                    "name":"accessToken",
+                    "type":"String",
+                    "info":"The valid accessToken.",
+                    "required":true
+                },
+                {
+                    "name":"userId",
+                    "type":"String",
+                    "info":"The valid user ID.",
+                    "required":true
+                },
+                {
+                    "name":"page",
+                    "type":"String",
+                    "info":"Parameter for pagination.",
+                    "required":false
+                },
+                {
+                    "name":"perPage",
+                    "type":"Number",
+                    "info":"Filter parameter: define the amount of records sent per call (max 50).",
+                    "required":false
+                },
+                {
+                    "name":"order",
+                    "type":"Select",
+                    "options":[
+                        "asc",
+                        "desc"
+                    ],
+                    "info":"Filter parameter: define the order you want to receive the records (does not affect older\/newer behaviour). Valid values are asc or desc.",
+                    "required":false
+                },
+                {
+                    "name":"sortBy",
+                    "type":"Select",
+                    "options":[
+                        "created_at",
+                        "updated_at",
+                        "featured_at"
+                    ],
+                    "info":"Filter parameter: valid values are created_at, updated_at or featured_at.",
+                    "required":false
+                },
+                {
+                    "name":"searchFeatured",
+                    "type":"Select",
+                    "options":[
+                        "true",
+                        "false"
+                    ],
+                    "info":"Only return collections that have been featured on Product Hunt. true or false. Default = false.",
+                    "required":false
+                }
+            ],
+            "callbacks":[
+                {
+                    "name":"error",
+                    "info":"Error"
+                },
+                {
+                    "name":"success",
+                    "info":"Success"
+                }
+            ]
+        },
+        {
+            "name":"getCollectionsWithPost",
+            "description":"This endpoint allows to get all collections that include a certain post.",
+            "args":[
+                {
+                    "name":"accessToken",
+                    "type":"String",
+                    "info":"The valid accessToken.",
+                    "required":true
+                },
+                {
+                    "name":"postId",
+                    "type":"String",
+                    "info":"The valid post ID.",
+                    "required":true
+                },
+                {
+                    "name":"page",
+                    "type":"String",
+                    "info":"Parameter for pagination.",
+                    "required":false
+                },
+                {
+                    "name":"perPage",
+                    "type":"Number",
+                    "info":"Filter parameter: define the amount of records sent per call (max 50).",
+                    "required":false
+                },
+                {
+                    "name":"order",
+                    "type":"Select",
+                    "options":[
+                        "asc",
+                        "desc"
+                    ],
+                    "info":"Filter parameter: define the order you want to receive the records (does not affect older\/newer behaviour). Valid values are asc or desc.",
+                    "required":false
+                },
+                {
+                    "name":"sortBy",
+                    "type":"Select",
+                    "options":[
+                        "created_at",
+                        "updated_at",
+                        "featured_at"
+                    ],
+                    "info":"Filter parameter: valid values are created_at, updated_at or featured_at.",
+                    "required":false
+                },
+                {
+                    "name":"searchFeatured",
+                    "type":"Select",
+                    "options":[
+                        "true",
+                        "false"
+                    ],
+                    "info":"Only return collections that have been featured on Product Hunt. true or false. Default = false.",
+                    "required":false
+                }
+            ],
+            "callbacks":[
+                {
+                    "name":"error",
+                    "info":"Error"
+                },
+                {
+                    "name":"success",
+                    "info":"Success"
+                }
+            ]
+        },
+        {
+            "name":"getSingleCollection",
+            "description":"This endpoint allows to get details of a collection.",
+            "args":[
+                {
+                    "name":"accessToken",
+                    "type":"String",
+                    "info":"The valid accessToken.",
+                    "required":true
+                },
+                {
+                    "name":"collectionId",
+                    "type":"String",
+                    "info":"The numeric ID of the Collection you want to fetch.",
+                    "required":true
+                }
+            ],
+            "callbacks":[
+                {
+                    "name":"error",
+                    "info":"Error"
+                },
+                {
+                    "name":"success",
+                    "info":"Success"
+                }
+            ]
+        },
+        {
+            "name":"getNotifications",
+            "description":"This endpoint allows to receive your latest Post related notifications.",
+            "args":[
+                {
+                    "name":"accessToken",
+                    "type":"String",
+                    "info":"The valid accessToken.",
+                    "required":true
+                },
+                {
+                    "name":"perPage",
+                    "type":"Number",
+                    "info":"Filter parameter: define the amount of records sent per call (max 50).",
+                    "required":false
+                },
+                {
+                    "name":"searchType",
+                    "type":"String",
+                    "info":"Type of reference object accepted, defaults to 'Post', use 'all' for every notification type.",
+                    "required":false
+                }
+            ],
+            "callbacks":[
+                {
+                    "name":"error",
+                    "info":"Error"
+                },
+                {
+                    "name":"success",
+                    "info":"Success"
+                }
+            ]
+        },
+        {
+            "name":"getPostVotes",
+            "description":"This endpoint allows to see all votes for a post.",
+            "args":[
+                {
+                    "name":"accessToken",
+                    "type":"String",
+                    "info":"The valid accessToken.",
+                    "required":true
+                },
+                {
+                    "name":"postId",
+                    "type":"String",
+                    "info":"The ID of the post you want to find votes for.",
+                    "required":true
+                },
+                {
+                    "name":"older",
+                    "type":"String",
+                    "info":"Filter parameter: get only records older than the provided id.",
+                    "required":false
+                },
+                {
+                    "name":"newer",
+                    "type":"String",
+                    "info":"Filter parameter: get only records newer than the provided id.",
+                    "required":false
+                },
+                {
+                    "name":"perPage",
+                    "type":"Number",
+                    "info":"Filter parameter: define the amount of records sent per call (max 50).",
+                    "required":false
+                },
+                {
+                    "name":"order",
+                    "type":"Select",
+                    "options":[
+                        "asc",
+                        "desc"
+                    ],
+                    "info":"Filter parameter: define the order you want to receive the records (does not affect older\/newer behaviour). Valid values are asc or desc.",
+                    "required":false
+                }
+            ],
+            "callbacks":[
+                {
+                    "name":"error",
+                    "info":"Error"
+                },
+                {
+                    "name":"success",
+                    "info":"Success"
+                }
+            ]
+        },
+        {
+            "name":"getUserVotes",
+            "description":"This endpoint allows to see all votes for a user.",
+            "args":[
+                {
+                    "name":"accessToken",
+                    "type":"String",
+                    "info":"The valid accessToken.",
+                    "required":true
+                },
+                {
+                    "name":"userId",
+                    "type":"String",
+                    "info":"The ID of the user you want to find votes for.",
+                    "required":true
+                },
+                {
+                    "name":"older",
+                    "type":"String",
+                    "info":"Filter parameter: get only records older than the provided id.",
+                    "required":false
+                },
+                {
+                    "name":"newer",
+                    "type":"String",
+                    "info":"Filter parameter: get only records newer than the provided id.",
+                    "required":false
+                },
+                {
+                    "name":"perPage",
+                    "type":"Number",
+                    "info":"Filter parameter: define the amount of records sent per call (max 50).",
+                    "required":false
+                },
+                {
+                    "name":"order",
+                    "type":"Select",
+                    "options":[
+                        "asc",
+                        "desc"
+                    ],
+                    "info":"Filter parameter: define the order you want to receive the records (does not affect older\/newer behaviour). Valid values are asc or desc.",
+                    "required":false
+                }
+            ],
+            "callbacks":[
+                {
+                    "name":"error",
+                    "info":"Error"
+                },
+                {
+                    "name":"success",
+                    "info":"Success"
+                }
+            ]
+        },
+        {
+            "name":"getMySettings",
+            "description":"This endpoint allows to get your own details.",
+            "args":[
+                {
+                    "name":"accessToken",
+                    "type":"String",
+                    "info":"The valid accessToken.",
+                    "required":true
+                },
+                {
+                    "name":"exclude",
+                    "type":"String",
+                    "info":"Option to exclude certain values from the request. Options - \"relationships\".",
+                    "required":false
+                }
+            ],
+            "callbacks":[
+                {
+                    "name":"error",
+                    "info":"Error"
+                },
+                {
+                    "name":"success",
+                    "info":"Success"
+                }
+            ]
+        },
+        {
+            "name":"getFollowers",
+            "description":"This endpoint allows to get list all followers.",
+            "args":[
+                {
+                    "name":"accessToken",
+                    "type":"String",
+                    "info":"The valid accessToken.",
+                    "required":true
+                },
+                {
+                    "name":"userId",
+                    "type":"String",
+                    "info":"The ID of the user you want to fetch all followers from.",
+                    "required":true
+                },
+                {
+                    "name":"older",
+                    "type":"String",
+                    "info":"Filter parameter: get only records older than the provided id.",
+                    "required":false
+                },
+                {
+                    "name":"newer",
+                    "type":"String",
+                    "info":"Filter parameter: get only records newer than the provided id.",
+                    "required":false
+                },
+                {
+                    "name":"perPage",
+                    "type":"Number",
+                    "info":"Filter parameter: define the amount of records sent per call (max 50).",
+                    "required":false
+                },
+                {
+                    "name":"order",
+                    "type":"Select",
+                    "options":[
+                        "asc",
+                        "desc"
+                    ],
+                    "info":"Filter parameter: define the order you want to receive the records (does not affect older\/newer behaviour). Valid values are asc or desc.",
+                    "required":false
+                }
+            ],
+            "callbacks":[
+                {
+                    "name":"error",
+                    "info":"Error"
+                },
+                {
+                    "name":"success",
+                    "info":"Success"
+                }
+            ]
+        },
+        {
+            "name":"getInteractions",
+            "description":"This endpoint allows to get user's interactions.",
+            "args":[
+                {
+                    "name":"accessToken",
+                    "type":"String",
+                    "info":"The valid accessToken.",
+                    "required":true
+                },
+                {
+                    "name":"include",
+                    "type":"Select",
+                    "options":[
+                        "following_user_ids",
+                        "voted_post_ids",
+                        "voted_comment_ids",
+                        "collected_post_ids",
+                        "subscribed_collection_ids",
+                        "subscribed_live_event_ids",
+                        "followed_topics_ids"
+                    ],
+                    "info":"Interactions to be included. Possible values: following_user_ids, voted_post_ids, voted_comment_ids, collected_post_ids, subscribed_collection_ids, subscribed_live_event_ids, followed_topics_ids.",
+                    "required":false
+                }
+            ],
+            "callbacks":[
+                {
+                    "name":"error",
+                    "info":"Error"
+                },
+                {
+                    "name":"success",
+                    "info":"Success"
+                }
+            ]
+        },
+        {
+            "name":"getCategories",
+            "description":"This endpoint allows to get categories.",
+            "args":[
+                {
+                    "name":"accessToken",
+                    "type":"String",
+                    "info":"The valid accessToken.",
+                    "required":true
+                }
+            ],
+            "callbacks":[
+                {
+                    "name":"error",
+                    "info":"Error"
+                },
+                {
+                    "name":"success",
+                    "info":"Success"
+                }
+            ]
+        },
+        {
+            "name":"getLiveEvents",
+            "description":"This endpoint allows to get list of live events.",
+            "args":[
+                {
+                    "name":"accessToken",
+                    "type":"String",
+                    "info":"The valid accessToken.",
+                    "required":true
+                },
+                {
+                    "name":"offset",
+                    "type":"String",
+                    "info":"Filter parameter: define the amount of records to be skipped.",
+                    "required":false
+                },
+                {
+                    "name":"perPage",
+                    "type":"Number",
+                    "info":"Filter parameter: define the amount of records sent per call (default 20, max 50).",
+                    "required":false
+                },
+                {
+                    "name":"older",
+                    "type":"DatePicker",
+                    "info":"Filter parameter: get only records with older \"start_at\" date than the provided date (format \"YYYY-MM-DD\").",
+                    "required":false
+                },
+                {
+                    "name":"newer",
+                    "type":"DatePicker",
+                    "info":"Filter parameter: get only records with newer \"start_at\" date (includes events with unspeficifed date) than the provided date (format \"YYYY-MM-DD\").",
+                    "required":false
+                },
+                {
+                    "name":"searchDate",
+                    "type":"DatePicker",
+                    "info":"Retrieve events for a specific month (format \"YYYY-MM\"), use \false\" for events without a start_at date.",
+                    "required":false
+                },
+                {
+                    "name":"searchLiveVideo",
+                    "type":"Select",
+                    "options":[
+                        "true",
+                        "false"
+                    ],
+                    "info":"Retrieve LIVE on camera events. true or false. Default: false.",
+                    "required":false
+                },
+                {
+                    "name":"searchSlug",
+                    "type":"String",
+                    "info":"Filter by the url slug of the collection.",
+                    "required":false
+                }
+            ],
+            "callbacks":[
+                {
+                    "name":"error",
+                    "info":"Error"
+                },
+                {
+                    "name":"success",
+                    "info":"Success"
+                }
+            ]
+        },
+        {
+            "name":"getSingleLiveEvent",
+            "description":"This endpoint allows to get details of a live event.",
+            "args":[
+                {
+                    "name":"accessToken",
+                    "type":"String",
+                    "info":"The valid accessToken.",
+                    "required":true
+                },
+                {
+                    "name":"liveEventId",
+                    "type":"String",
+                    "info":"The numeric ID of the live event you want to fetch.",
+                    "required":true
+                }
+            ],
+            "callbacks":[
+                {
+                    "name":"error",
+                    "info":"Error"
+                },
+                {
+                    "name":"success",
+                    "info":"Success"
+                }
+            ]
+        },
+        {
+            "name":"generateShareableImage",
+            "description":"This endpoint allows to generate a shareable image for a comment.",
+            "args":[
+                {
+                    "name":"accessToken",
+                    "type":"String",
+                    "info":"The valid accessToken.",
+                    "required":true
+                },
+                {
+                    "name":"commentId",
+                    "type":"String",
+                    "info":"The ID of the comment you want an image for.",
+                    "required":true
+                }
+            ],
+            "callbacks":[
+                {
+                    "name":"error",
+                    "info":"Error"
+                },
+                {
+                    "name":"success",
+                    "info":"Success"
+                }
+            ]
+        },
+        {
+            "name":"getTopics",
+            "description":"This endpoint allows to get list of topics.",
+            "args":[
+                {
+                    "name":"accessToken",
+                    "type":"String",
+                    "info":"The valid accessToken.",
+                    "required":true
+                },
+                {
+                    "name":"older",
+                    "type":"DatePicker",
+                    "info":"Filter parameter: get only records older than the provided id (format \"YYYY-MM-DD\").",
+                    "required":false
+                },
+                {
+                    "name":"newer",
+                    "type":"DatePicker",
+                    "info":"Filter parameter: get only records newer than the provided id (format \"YYYY-MM-DD\").",
+                    "required":false
+                },
+                {
+                    "name":"perPage",
+                    "type":"Number",
+                    "info":"Filter parameter: define the amount of records sent per call (max 50).",
+                    "required":false
+                },
+                {
+                    "name":"sortBy",
+                    "type":"Select",
+                    "options":[
+                        "created_at",
+                        "updated_at",
+                        "featured_at"
+                    ],
+                    "info":"Sort api response: valid parameters to sort by: created_at, id, updated_at.",
+                    "required":false
+                },
+                {
+                    "name":"order",
+                    "type":"Select",
+                    "options":[
+                        "desc",
+                        "asc"
+                    ],
+                    "info":"Sort api response: valid parameters are desc and asc.",
+                    "required":false
+                },
+                {
+                    "name":"searchTrending",
+                    "type":"Select",
+                    "options":[
+                        "true",
+                        "false"
+                    ],
+                    "info":"Filter parameter: can filter only trending topics.",
+                    "required":false
+                },
+                {
+                    "name":"searchFollowerId",
+                    "type":"String",
+                    "info":"Filter parameter: can filter topics by follower user id.",
+                    "required":false
+                },
+                {
+                    "name":"searchSlug",
+                    "type":"String",
+                    "info":"Filter parameter: filter by the slug of the url.",
+                    "required":false
+                }
+            ],
+            "callbacks":[
+                {
+                    "name":"error",
+                    "info":"Error"
+                },
+                {
+                    "name":"success",
+                    "info":"Success"
+                }
+            ]
+        },
+        {
+            "name":"getSingleTopic",
+            "description":"This endpoint allows to get details of a topic.",
+            "args":[
+                {
+                    "name":"accessToken",
+                    "type":"String",
+                    "info":"The valid accessToken.",
+                    "required":true
+                },
+                {
+                    "name":"topicId",
+                    "type":"String",
+                    "info":"The numeric ID of the Topic you want to fetch.",
+                    "required":true
+                }
+            ],
+            "callbacks":[
+                {
+                    "name":"error",
+                    "info":"Error"
+                },
+                {
+                    "name":"success",
+                    "info":"Success"
+                }
+            ]
+        },
+        {
+            "name":"subscribeToPushNotifications",
+            "description":"This endpoint allows to subscribe a logged-in user to desktop push notifications.",
+            "args":[
+                {
+                    "name":"accessToken",
+                    "type":"String",
+                    "info":"The valid accessToken.",
+                    "required":true
+                },
+                {
+                    "name":"desktopPushToken",
+                    "type":"String",
+                    "info":"PushService Vendor Token for Desktop App Push Notifications (define one of those 3 tokens).",
+                    "required":false
+                },
+                {
+                    "name":"mobilePushToken",
+                    "type":"String",
+                    "info":"PushService Vendor Token for Mobile App Push Notifications (define one of those 3 tokens).",
+                    "required":false
+                },
+                {
+                    "name":"browserPushToken",
+                    "type":"String",
+                    "info":"PushService Vendor Token for Browser Push Notification (define one of those 3 tokens).",
+                    "required":false
+                }
+            ],
+            "callbacks":[
+                {
+                    "name":"error",
+                    "info":"Error"
+                },
+                {
+                    "name":"success",
+                    "info":"Success"
+                }
+            ]
+        },
+        {
+            "name":"getComments",
+            "description":"This endpoint allows to fetch a stream of all recent comments.",
+            "args":[
+                {
+                    "name":"accessToken",
+                    "type":"String",
+                    "info":"The valid accessToken.",
+                    "required":true
+                },
+                {
+                    "name":"older",
+                    "type":"String",
+                    "info":"Filter parameter: get only records older than the provided id.",
+                    "required":false
+                },
+                {
+                    "name":"newer",
+                    "type":"String",
+                    "info":"Filter parameter: get only records newer than the provided id.",
+                    "required":false
+                },
+                {
+                    "name":"perPage",
+                    "type":"Number",
+                    "info":"Filter parameter: define the amount of records sent per call (max 50).",
+                    "required":false
+                },
+                {
+                    "name":"order",
+                    "type":"Select",
+                    "options":[
+                        "desc",
+                        "asc"
+                    ],
+                    "info":"Filter parameter: define the order you want to receive the records (does not affect older\/newer behaviour). Valid values are asc or desc..",
+                    "required":false
+                },
+                {
+                    "name":"searchUserId",
+                    "type":"String",
+                    "info":"The id of a user you want to filter for. If you pass this id the user won't be nested.",
+                    "required":false
+                },
+                {
+                    "name":"searchPostId",
+                    "type":"String",
+                    "info":"The id of a post you want to filter for. If you pass this id the post won't be nested.",
+                    "required":false
+                },
+                {
+                    "name":"searchAmaEventId",
+                    "type":"String",
+                    "info":"The id of a post you want to filter for. If you pass this id the ama_event won't be nested.",
+                    "required":false
+                }
+            ],
+            "callbacks":[
+                {
+                    "name":"error",
+                    "info":"Error"
+                },
+                {
+                    "name":"success",
+                    "info":"Success"
+                }
+            ]
+        },
+        {
+            "name":"getUserComments",
+            "description":"This endpoint allows to fetch comments of a user (not nested).",
+            "args":[
+                {
+                    "name":"accessToken",
+                    "type":"String",
+                    "info":"The valid accessToken.",
+                    "required":true
+                },
+                {
+                    "name":"userId",
+                    "type":"String",
+                    "info":"The ID of the user you want to fetch comments.",
+                    "required":true
+                }
+            ],
+            "callbacks":[
+                {
+                    "name":"error",
+                    "info":"Error"
+                },
+                {
+                    "name":"success",
+                    "info":"Success"
+                }
+            ]
+        },
+        {
+            "name":"getPostThreads",
+            "description":"This endpoint allows to fetch all threads of a post (nested and sorted).",
+            "args":[
+                {
+                    "name":"accessToken",
+                    "type":"String",
+                    "info":"The valid accessToken.",
+                    "required":true
+                },
+                {
+                    "name":"postId",
+                    "type":"String",
+                    "info":"The id the post the comment belongs to (passed via URL).",
+                    "required":true
+                },
+                {
+                    "name":"older",
+                    "type":"String",
+                    "info":"Filter parameter: get only records older than the provided id.",
+                    "required":false
+                },
+                {
+                    "name":"newer",
+                    "type":"String",
+                    "info":"Filter parameter: get only records newer than the provided id.",
+                    "required":false
+                },
+                {
+                    "name":"perPage",
+                    "type":"Number",
+                    "info":"Filter parameter: define the amount of records sent per call (max 50).",
+                    "required":false
+                },
+                {
+                    "name":"order",
+                    "type":"Select",
+                    "options":[
+                        "asc",
+                        "desc"
+                    ],
+                    "info":"Filter parameter: define the order you want to receive the records (does not affect older\/newer behaviour). Valid values are asc or desc.",
+                    "required":false
+                }
+            ],
+            "callbacks":[
+                {
+                    "name":"error",
+                    "info":"Error"
+                },
+                {
+                    "name":"success",
+                    "info":"Success"
+                }
+            ]
+        },
+        {
+            "name":"getLiveEventThreads",
+            "description":"This endpoint allows to fetch all threads of a live event (nested and sorted).",
+            "args":[
+                {
+                    "name":"accessToken",
+                    "type":"String",
+                    "info":"The valid accessToken.",
+                    "required":true
+                },
+                {
+                    "name":"liveEventId",
+                    "type":"String",
+                    "info":"The id the live event the comment belongs to (passed via URL).",
+                    "required":true
+                },
+                {
+                    "name":"older",
+                    "type":"String",
+                    "info":"Filter parameter: get only records older than the provided id.",
+                    "required":false
+                },
+                {
+                    "name":"newer",
+                    "type":"String",
+                    "info":"Filter parameter: get only records newer than the provided id.",
+                    "required":false
+                },
+                {
+                    "name":"perPage",
+                    "type":"Number",
+                    "info":"Filter parameter: define the amount of records sent per call (max 50).",
+                    "required":false
+                },
+                {
+                    "name":"order",
+                    "type":"Select",
+                    "options":[
+                        "desc",
+                        "asc"
+                    ],
+                    "info":"Filter parameter: define the order you want to receive the records (does not affect older\/newer behaviour). Valid values are asc or desc.",
+                    "required":false
+                }
+            ],
+            "callbacks":[
+                {
+                    "name":"error",
+                    "info":"Error"
+                },
+                {
+                    "name":"success",
+                    "info":"Success"
+                }
+            ]
+        },
+        {
+            "name":"getCommentVotes",
+            "description":"This endpoint allows to see all votes for a comment.",
+            "args":[
+                {
+                    "name":"accessToken",
+                    "type":"String",
+                    "info":"The valid accessToken.",
+                    "required":true
+                },
+                {
+                    "name":"commentId",
+                    "type":"String",
+                    "info":"The ID of the comment you want to find votes for.",
+                    "required":true
+                },
+                {
+                    "name":"older",
+                    "type":"String",
+                    "info":"Filter parameter: get only records older than the provided id.",
+                    "required":false
+                },
+                {
+                    "name":"newer",
+                    "type":"String",
+                    "info":"Filter parameter: get only records newer than the provided id.",
+                    "required":false
+                },
+                {
+                    "name":"perPage",
+                    "type":"Number",
+                    "info":"Filter parameter: define the amount of records sent per call (max 50).",
+                    "required":false
+                },
+                {
+                    "name":"order",
+                    "type":"Select",
+                    "options":[
+                        "desc",
+                        "asc"
+                    ],
+                    "info":"Filter parameter: define the order you want to receive the records (does not affect older\/newer behaviour). Valid values are asc or desc.",
+                    "required":false
+                }
+            ],
+            "callbacks":[
+                {
+                    "name":"error",
+                    "info":"Error"
+                },
+                {
+                    "name":"success",
+                    "info":"Success"
+                }
+            ]
+        }
+    ]
 }
